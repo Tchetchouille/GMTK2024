@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7fts27cgd051"]
+
+[ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="1_1x8q5"]
+
+[node name="FloScene" type="Node3D"]
+
+[node name="Terrain" parent="." instance=ExtResource("1_1x8q5")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.451376, 0.892334, 0, -0.892334, 0.451376, 0, 1.13658, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94398, 0.330004, 0, -0.330004, 0.94398, 0, 1.61715, 2.67745)
