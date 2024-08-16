@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8ccv6da5q503"]
+
+[ext_resource type="Script" path="res://scenes/character_body_3d.gd" id="2_ro3ve"]
+
+[sub_resource type="GDScript" id="GDScript_un5mm"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewddu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ce67"]
+
+[node name="Character" type="Node3D"]
+script = SubResource("GDScript_un5mm")
+
+[node name="Body" type="CharacterBody3D" parent="."]
+script = ExtResource("2_ro3ve")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("BoxShape3D_ewddu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("BoxMesh_7ce67")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.875346, 0.483496, 0, -0.483496, 0.875346, 0, 1.95637, 2.76709)
