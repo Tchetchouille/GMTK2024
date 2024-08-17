@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6sod8sree021"]
+[gd_scene load_steps=5 format=3 uid="uid://b6sod8sree021"]
 
-[ext_resource type="PackedScene" uid="uid://c4y02kp5q7cfb" path="res://scenes/Character.tscn" id="1_mby6i"]
-[ext_resource type="PackedScene" uid="uid://dbbbli60c0rfc" path="res://scenes/JoelScene/enemy.tscn" id="4_yk8s3"]
+[ext_resource type="Script" path="res://scripts/camera_screen_shake_test_2.gd" id="3_10tp0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6qwi"]
 albedo_color = Color(0.403249, 0.614658, 0.440556, 1)
@@ -30,9 +29,5 @@ mesh = SubResource("PlaneMesh_4y123")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_eqs4s")
 
-[node name="character" parent="." instance=ExtResource("1_mby6i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.89843)
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_yk8s3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.72034, -27.105)
-target = NodePath("../character")
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("3_10tp0")
