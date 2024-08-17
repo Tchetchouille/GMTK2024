@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ba24ru1psi5s4"]
 
-[ext_resource type="Script" path="res://scripts/quit_button.gd" id="1_07yw8"]
+[ext_resource type="Script" path="res://scripts/UI/quit_button.gd" id="1_07yw8"]
 
 [node name="QuitButton" type="MarginContainer"]
 offset_right = 42.0
