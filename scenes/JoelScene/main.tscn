@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://xefcokuhgmkg"]
+
+[ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="1_qxjbq"]
+[ext_resource type="PackedScene" uid="uid://btib4g3wvigur" path="res://scenes/JoelScene/fake_player.tscn" id="2_5kdux"]
+[ext_resource type="PackedScene" uid="uid://dbbbli60c0rfc" path="res://scenes/JoelScene/enemy.tscn" id="3_8ykgi"]
+
+[node name="main" type="Node"]
+
+[node name="Terrain" parent="." instance=ExtResource("1_qxjbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="FakePlayer" parent="." instance=ExtResource("2_5kdux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936772, 3)
+
+[node name="Enemy" parent="." instance=ExtResource("3_8ykgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -28.5763)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 4.65002, 4.68342)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42393, 41.0667)
