@@ -13,7 +13,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_7w8k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.5314)
-visible = false
 target = NodePath("../Character")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
