@@ -6,6 +6,5 @@
 [node name="JereTestScene" type="Node"]
 
 [node name="MainMenu" parent="." instance=ExtResource("1_376a7")]
-visible = false
 
 [node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]

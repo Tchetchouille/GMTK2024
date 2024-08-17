@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bamqbdjk5ka5y"]
+[gd_scene load_steps=7 format=3 uid="uid://bamqbdjk5ka5y"]
 
+[ext_resource type="Theme" uid="uid://dm3fofnyu8ox1" path="res://resources/Themes/main_menu.tres" id="1_gc4hb"]
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_gw4m3"]
 [ext_resource type="PackedScene" uid="uid://ofgmtbsn8vv3" path="res://scenes/UI/Buttons/settings_button.tscn" id="2_ofhes"]
 [ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="3_eyqqu"]
+[ext_resource type="Script" path="res://scripts/UI/background.gd" id="3_n6yyi"]
 [ext_resource type="PackedScene" uid="uid://b82obejhvti3m" path="res://scenes/UI/Buttons/credits_button.tscn" id="4_8hv2g"]
-
-[sub_resource type="Theme" id="Theme_8wxb5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,20 +14,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_8wxb5")
+theme = ExtResource("1_gc4hb")
 script = ExtResource("1_gw4m3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.352213, 0.300583, 0.275632, 1)
+script = ExtResource("3_n6yyi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -292.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
