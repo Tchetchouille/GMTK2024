@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var knockback_strength: float = 30.0
 @export var knockback_duration: float = 0.5  # Knockback duration in seconds
 @export var target: CharacterBody3D
+@export var gem_scene: PackedScene
 
 
 var knockback_timer: float = 0.0
@@ -74,5 +75,12 @@ func apply_knockback(normal: Vector3):
 func take_damage(damage: int = 100):
 	health -= damage
 	if health <= 0:
+		drop_gem()
 		emit_signal("enemy_died", self)
 		queue_free()
+		
+func drop_gem():
+	if gem_scene:
+		var gem_instance = gem_scene.instantiate() as Area3D
+		gem_instance.global_transform.origin = global_transform.origin  # Place the gem where the enemy is
+		get_parent().add_child(gem_instance)  # Add the gem to the scene

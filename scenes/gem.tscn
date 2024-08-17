@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://w4y4qmu2v8b7"]
+
+[ext_resource type="Script" path="res://scripts/gem.gd" id="1_hp7o6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nd1ao"]
+
+[node name="Gem" type="Area3D"]
+script = ExtResource("1_hp7o6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.252496, 0)
+mesh = SubResource("SphereMesh_nd1ao")

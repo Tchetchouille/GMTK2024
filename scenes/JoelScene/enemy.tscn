@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbbbli60c0rfc"]
+[gd_scene load_steps=5 format=3 uid="uid://dbbbli60c0rfc"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xlh5g"]
+[ext_resource type="PackedScene" uid="uid://w4y4qmu2v8b7" path="res://scenes/gem.tscn" id="2_d57gm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13kn6"]
 
@@ -8,6 +9,7 @@
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_xlh5g")
+gem_scene = ExtResource("2_d57gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430977, 0)
