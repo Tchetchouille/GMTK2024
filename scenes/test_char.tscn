@@ -1,28 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqmqffdpes2g1"]
+[gd_scene load_steps=6 format=3 uid="uid://d2sbju3rg8q1s"]
 
-[ext_resource type="PackedScene" uid="uid://c4y02kp5q7cfb" path="res://scenes/Character.tscn" id="1_o8ce0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m26iw"]
-size = Vector3(60, 2, 60)
-
-[sub_resource type="BoxMesh" id="BoxMesh_icm45"]
-size = Vector3(60, 2, 60)
+[ext_resource type="PackedScene" uid="uid://ywenk7jinwf5" path="res://scenes/Character.tscn" id="1_o8ce0"]
+[ext_resource type="PackedScene" uid="uid://c4qxc2r4tnvva" path="res://scenes/weapon.tscn" id="2_7tshf"]
+[ext_resource type="Resource" uid="uid://beju6naak158i" path="res://resources/mountain.tres" id="3_uvvxc"]
+[ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="4_ywacn"]
+[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/bone.tres" id="5_yxvf3"]
 
 [node name="TestChar" type="Node3D"]
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-shape = SubResource("BoxShape3D_m26iw")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_icm45")
-
-[node name="Character" parent="Ground" instance=ExtResource("1_o8ce0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575616, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 34, 0)
+
+[node name="Weapon" parent="." instance=ExtResource("2_7tshf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, 1, 15.195)
+resource = ExtResource("3_uvvxc")
+
+[node name="Terrain" parent="." instance=ExtResource("4_ywacn")]
+
+[node name="character" parent="." instance=ExtResource("1_o8ce0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Weapon2" parent="." instance=ExtResource("2_7tshf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1303, 0, 6.42492)
+resource = ExtResource("5_yxvf3")
