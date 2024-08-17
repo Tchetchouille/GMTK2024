@@ -2,7 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene  # The scene resource of the enemy
 @export var spawn_radius: float = 80.0  # Radius around the target where enemies will spawn
-@export var number_of_enemies: int = 5  # Number of enemies to spawn
+@export var number_of_enemies: int = 1  # Number of enemies to spawn
 @export var target: CharacterBody3D  # The target that enemies should move towards
 @export var scale_variation: float = 0.2  # Variation factor for enemy scale
 
