@@ -3,6 +3,7 @@ extends Node3D
 class_name Terrain
 
 @export var map_size = 100
+@export var player: CharacterBody3D
 var weapon_template = preload("res://scenes/weapon.tscn")
 var noise: FastNoiseLite
 var taken_spaces = Array()
@@ -28,7 +29,7 @@ func _ready() -> void:
 	})
 
 	# scale as if the character was 12cm high
-	scale = 10 * Vector3.ONE
+	#scale = 10 * Vector3.ONE
 
 	for weapon_resource in weapons:
 		for _i in range(weapon_resource.max_occurrences):
@@ -54,10 +55,21 @@ func _ready() -> void:
 			
 			taken_spaces.append(new_space)
 
-func _process(delta):
-	scale -= Vector3.ONE * delta * 0.002
-	if scale.is_zero_approx():
-		scale = Vector3.ZERO
+#func _process(delta):
+	#if player:
+		#var player_pos = player.transform.origin
+		#var to_player = player_pos - transform.origin
+		#
+		## Calculate scaling down
+		#scale -= Vector3.ONE * delta * 0.002
+		#if scale.is_zero_approx():
+			#scale = Vector3.ZERO
+#
+		## Adjust the position to scale towards the player
+		#transform.origin += to_player * delta * 0.002
+
+		
+
 func add_weapon(weapon_resource: WeaponResource, position: Vector3):
 	var weapon = weapon_template.instantiate()
 

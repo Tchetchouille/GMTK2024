@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4y02kp5q7cfb"]
+[gd_scene load_steps=9 format=3 uid="uid://ywenk7jinwf5"]
 
+[ext_resource type="PackedScene" uid="uid://40dq7u1tbr73" path="res://scenes/weapons/cara_model.tscn" id="2_a520b"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
 
@@ -31,6 +32,7 @@ shape = SubResource("BoxShape3D_ewddu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("BoxMesh_7ce67")
 
 [node name="CollisionArea" type="Area3D" parent="."]
@@ -48,8 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31575, 0.220425)
 shape = SubResource("BoxShape3D_qrq71")
 
 [node name="CharacterCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)
-fov = 37.8493
+transform = Transform3D(1, 0, 0, 0, 0.890943, 0.454115, 0, -0.454115, 0.890943, 0, 2.81123, 3.5982)
+
+[node name="CARA_Model" parent="." instance=ExtResource("2_a520b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="body_exited" from="CollisionArea" to="." method="_on_collision_area_body_exited"]
