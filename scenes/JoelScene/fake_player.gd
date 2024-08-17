@@ -6,8 +6,18 @@ extends CharacterBody3D
 @export var radius: float = 10.0
 @export var angular_speed: float = 1.0
 
+
 # Internal variables
 var angle: float = 0.0
+
+var knockback_velocity: Vector3 = Vector3.ZERO
+@export var knockback_strength: float = 30.0
+@export var knockback_duration: float = 2
+
+func apply_knockback(normal: Vector3):
+	knockback_velocity = normal * knockback_strength
+	await get_tree().create_timer(knockback_duration).timeout
+	knockback_velocity = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
 	# Handle gravity

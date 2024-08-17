@@ -12,13 +12,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="FakePlayer" parent="." instance=ExtResource("2_5kdux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936772, 3)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_8ykgi")]
+[node name="Enemy" parent="." instance=ExtResource("3_8ykgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -28.5763)
 speed = 20.0
 gravity = 20.0
 knockback_strength = 30.0
 knockback_duration = 2.0
-target = NodePath("../FakePlayer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 4.65002, 4.68342)
