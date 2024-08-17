@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1qh1g8wvmq3q"]
+
+[ext_resource type="PackedScene" uid="uid://di6gocbt5lrht" path="res://models/Player_Anim.fbx" id="1_mxbtm"]
+
+[node name="Player_Anim" instance=ExtResource("1_mxbtm")]
+
+[node name="locator1" parent="." index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.0174378, 0)
+
+[node name="Knight_Feather2" parent="locator1/Knight_Body1/Knight_Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965422, 0.260691, 0, -0.260691, 0.965422, -0.64819, 26.4098, 0.673446)
+
+[node name="Knight_Feather1" parent="locator1/Knight_Body1/Knight_Head" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.965422, 0.260691, 0, -0.260691, 0.965422, -3.69895e-06, 26.9117, 2.62086e-06)
+
+[node name="Knight_Feather" parent="locator1/Knight_Body1/Knight_Head" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.965422, 0.260691, 0, -0.260691, 0.965422, -0.530809, 26.7259, -0.0251518)
+
+[node name="Knight_Visor" parent="locator1/Knight_Body1/Knight_Head" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.994317, 0.106458, 0, -0.106458, 0.994317, 0, 12.801, 0)
+
+[node name="Knight_ShoulderL" parent="locator1/Knight_Body1" index="1"]
+transform = Transform3D(0.135771, 0.989554, 0.048467, -0.931954, 0.144162, -0.332686, -0.336198, 0, 0.941791, 16.9583, 22.6547, -0.577165)
+
+[node name="Knight_ElbowL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL" index="0"]
+transform = Transform3D(0.999991, 0, 0.0041455, 0, 1, 0, -0.0041455, 0, 0.999991, 8.32884, -0.152671, -0.608424)
+
+[node name="Knight_ShoulderR" parent="locator1/Knight_Body1" index="2"]
+transform = Transform3D(0.187439, -0.969939, 0.155194, 0.965813, 0.153177, -0.209148, 0.179089, 0.189091, 0.965491, -17.1392, 22.6547, -0.577165)
+
+[node name="Knight_ElbowR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR" index="0"]
+transform = Transform3D(0.999989, 0, -0.00473494, 0, 1, 0, 0.00473494, 0, 0.999989, -8.32884, 0.152671, -0.608424)
+
+[node name="Knight_LegL" parent="locator1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.998907, -0.0467323, 0, 0.0467323, 0.998907, 7.08021, 40.0046, -0.577165)
+
+[node name="Knight_KneeL" parent="locator1/Knight_LegL/Knight_UpLegL" index="0"]
+transform = Transform3D(0.999987, -0.00162, -0.00475337, -0.000195093, 0.933292, -0.359118, 0.00501806, 0.359114, 0.93328, 0.455323, -5.14907, 0.0107113)
+
+[node name="Knight_FootL" parent="locator1/Knight_LegL/Knight_UpLegL/Knight_KneeL/Knight_LowLegL" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.957822, 0.287364, 0, -0.287364, 0.957822, 0.0658601, -5.22435, -0.145895)
+
+[node name="Knight_LegR" parent="locator1" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.898881, 0.438193, 0, -0.438193, 0.898881, -6.73429, 40.0046, -0.577165)
+
+[node name="Knight_KneeR" parent="locator1/Knight_LegR/Knight_UpLegR" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.175405, -0.984496, 0, 0.984496, -0.175405, -0.455323, -5.14907, 0.0107113)
+
+[node name="Knight_FootR" parent="locator1/Knight_LegR/Knight_UpLegR/Knight_KneeR/Knight_LowLegR" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.995846, 0.091054, 0, -0.091054, 0.995846, -0.0658601, -5.22435, -0.145895)

@@ -2,5 +2,5 @@
 
 [resource]
 cull_mode = 2
-albedo_color = Color(0.238012, 0.267896, 0.323386, 1)
+albedo_color = Color(0.217974, 0.246008, 0.298071, 1)
 metallic_specular = 0.0
