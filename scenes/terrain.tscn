@@ -15,5 +15,5 @@ script = ExtResource("1_prc0o")
 shape = SubResource("WorldBoundaryShape3D_olwum")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.613541, -1.09101, 0.62749)
 mesh = SubResource("PlaneMesh_2jsih")
