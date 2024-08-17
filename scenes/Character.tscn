@@ -22,10 +22,8 @@ script = ExtResource("2_ro3ve")
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)
 top_level = true
+visible = false
 script = ExtResource("2_dgl5s")
-
-[node name="CharacterCamera3D" type="Camera3D" parent="CameraController"]
-fov = 37.8493
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -48,6 +46,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252583, -1.23938)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31575, 0.220425)
 shape = SubResource("BoxShape3D_qrq71")
+
+[node name="CharacterCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)
+fov = 37.8493
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="body_exited" from="CollisionArea" to="." method="_on_collision_area_body_exited"]
