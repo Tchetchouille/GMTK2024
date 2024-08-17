@@ -15,6 +15,24 @@ var current_scale: float = 0.12
 
 func _ready():
 	spawn_enemies()
+	# Create and configure the Timer node
+	var timer = Timer.new()
+	timer.wait_time = 10.0  # Set the timer to 10 seconds
+	timer.one_shot = false  # The timer will repeat indefinitely
+
+	# Connect the timeout signal to the function you want to call
+	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+
+	# Add the Timer to the scene tree
+	add_child(timer)
+
+	# Start the Timer
+	timer.start()
+
+
+func _on_Timer_timeout():
+	spawn_enemies()
+	
 
 func _process(_delta: float) -> void:
 	# Handles pausing the game
@@ -28,7 +46,7 @@ func spawn_enemies():
 		var enemy_instance = enemy_scene.instantiate() as CharacterBody3D
 		
 		var random_position = get_random_position_near_target()
-		enemy_instance.global_transform.origin = random_position
+		enemy_instance.transform.origin = random_position
 		var relative_scale = randf_range(1.0 - scale_variation, 1.0 + scale_variation)
 		enemy_instance.scale_ = relative_scale * current_scale
 		enemy_instance.scale = Vector3.ONE * relative_scale
@@ -36,13 +54,6 @@ func spawn_enemies():
 		add_child(enemy_instance)  # Add the instance to the scene tree
 		enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))  # Connect the signal
 		enemies.append(enemy_instance)
-
-
-func get_scaled_enemy():
-	var random_factor = randf_range(1.0 - scale_variation, 1.0 + scale_variation)
-	var uniform_scale = 1 * random_factor
-	return uniform_scale
-
 
 func get_random_position_near_target() -> Vector3:
 	# Access the player's scale_ variable
@@ -63,7 +74,6 @@ func get_random_position_near_target() -> Vector3:
 func _on_enemy_died(enemy_instance: CharacterBody3D):
 	enemies.erase(enemy_instance)
 
-	
 	var scale_amount = current_scale * scale_increment
 	scale_everything(scale_amount)
 	
@@ -93,4 +103,4 @@ func scale_everything(amount: float):
 	
 	
 	for enemy in enemies:
-		enemy.scale * scale_ratio
+		enemy.scale -= Vector3.ONE * amount

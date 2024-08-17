@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var current_weapon_resource: WeaponResource
 @export var knockback_strength: float = 100.0
 @export var knockback_duration: float = 0.5
+@export var pickup_increment: float = 10
 
 @onready var mouse_sensitivity = 0.01#get_var("look-sensitivity")
 
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	
 	if is_picking_up:
 		if Input.is_action_just_pressed("click_action") :
-			pickup_progress += 10
+			pickup_progress += pickup_increment
 			print(pickup_progress)
 			if pickup_progress > 100:
 				current_weapon_resource = picking_up_weapon.pick_up()
@@ -41,7 +42,7 @@ func _physics_process(delta):
 		else:
 			# loose progress if not clicking
 			pickup_progress -= inactivity_pickup_loss * delta
-			if pickup_progress >= 0:
+			if pickup_progress < 0:
 				pickup_progress = 0
 				picking_up_weapon = null
 				is_picking_up = false
@@ -119,6 +120,7 @@ func pickup_weapon() :
 	if closest_weapon:
 		picking_up_weapon = closest_weapon
 		is_picking_up = true
+		pickup_progress = pickup_increment
 
 func attack() :
 	if not current_weapon_resource: return
@@ -127,5 +129,5 @@ func attack() :
 	print("Attack!")
 	for enemy in enemies :
 		if enemy.has_method("take_damage") :
-			enemy.take_damage(current_weapon_resource.scale)
+			enemy.take_damage(current_weapon_resource.damage)
 			print("Ouch")
