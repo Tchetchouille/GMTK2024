@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b82obejhvti3m"]
+
+[ext_resource type="Script" path="res://scripts/UI/credits_button.gd" id="1_unh5w"]
+
+[node name="CreditsButton" type="MarginContainer"]
+offset_right = 63.0
+offset_bottom = 31.0
+script = ExtResource("1_unh5w")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Credits"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

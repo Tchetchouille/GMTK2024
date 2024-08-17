@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://baohwh2gcg8kf"]
+
+[ext_resource type="PackedScene" uid="uid://bamqbdjk5ka5y" path="res://scenes/UI/Menus/main_menu.tscn" id="1_376a7"]
+[ext_resource type="PackedScene" uid="uid://dth5dyuvfj4gl" path="res://scenes/UI/general_ui.tscn" id="2_0phh2"]
+
+[node name="JereTestScene" type="Node"]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_376a7")]
+
+[node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]
+visible = false

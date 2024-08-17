@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c28e2dvfnsntu"]
+
+[ext_resource type="PackedScene" uid="uid://ofgmtbsn8vv3" path="res://scenes/UI/Buttons/settings_button.tscn" id="1_j1e4u"]
+[ext_resource type="Script" path="res://scenes/UI/Menus/pause_menu.gd" id="1_vlb6b"]
+[ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="2_fxhfq"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlb6b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="SettingsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_j1e4u")]
+layout_mode = 2
+
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_fxhfq")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
