@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ofgmtbsn8vv3"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_bslv0"]
+
+[node name="SettingsButton" type="MarginContainer"]
+offset_right = 70.0
+offset_bottom = 31.0
+script = ExtResource("1_bslv0")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Settings
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_settings_button_pressed"]
