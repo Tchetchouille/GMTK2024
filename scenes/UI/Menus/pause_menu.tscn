@@ -23,7 +23,7 @@ grow_vertical = 2
 theme = ExtResource("1_ha31u")
 script = ExtResource("1_vlb6b")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5qvog")
 layout_mode = 1
 anchors_preset = 15
@@ -32,6 +32,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.380392, 0.380392, 0.380392, 0)
+
+[node name="Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.376471, 0.529412, 0.568627, 0.454902)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -51,6 +60,16 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
 [node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
@@ -62,6 +81,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SettingsMenu" parent="." instance=ExtResource("6_3662a")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

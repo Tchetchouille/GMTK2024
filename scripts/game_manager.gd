@@ -6,10 +6,19 @@ extends Node
 @export var target: CharacterBody3D  # The target that enemies should move towards
 @export var scale_variation: float = 0.2  # Variation factor for enemy scale
 
+var pause_menu = preload("res://scenes/UI/Menus/pause_menu.tscn")
+
 var enemies: Array = []
 
 func _ready():
 	spawn_enemies()
+
+func _process(_delta: float) -> void:
+	# Handles pausing the game
+	if Input.is_action_just_pressed("toggle_pause_menu") and get_tree().paused == false:
+		var instance = pause_menu.instantiate()
+		add_child(instance)
+		get_tree().paused = true
 
 func spawn_enemies():
 	for i in range(number_of_enemies):

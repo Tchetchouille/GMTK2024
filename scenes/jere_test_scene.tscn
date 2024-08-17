@@ -30,6 +30,7 @@ material = SubResource("StandardMaterial3D_c1b12")
 [node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]
 
 [node name="MerdierDeTest" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MerdierDeTest"]
 environment = SubResource("Environment_soui2")
@@ -39,6 +40,8 @@ transform = Transform3D(1, 0, 0, 0, 0.995026, 0.0996155, 0, -0.0996155, 0.995026
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="MerdierDeTest"]
 transform = Transform3D(-0.181583, -0.7062, -0.684331, -3.34559e-08, -0.6959, 0.718139, -0.983375, 0.130402, 0.126364, 0, 0, 0)
+light_color = Color(1, 0.674943, 0.628534, 1)
+shadow_enabled = true
 
 [node name="Floor" type="Node3D" parent="MerdierDeTest"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)

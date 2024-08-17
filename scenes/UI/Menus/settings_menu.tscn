@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4fycjv15m4l2"]
+[gd_scene load_steps=4 format=3 uid="uid://b4fycjv15m4l2"]
 
 [ext_resource type="Theme" uid="uid://cqu6jlcef4qae" path="res://resources/Themes/settings_menu.tres" id="1_o7d18"]
 [ext_resource type="PackedScene" uid="uid://bwpo3fgr5lcwr" path="res://scenes/UI/Buttons/back_button.tscn" id="1_wcsk2"]
+[ext_resource type="Script" path="res://scripts/UI/sensitivity_margin.gd" id="2_b5ojo"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -19,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(0, 0, 0, 0.921569)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,5 +37,30 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="SettingsTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="SensitivityMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_b5ojo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SensitivityMargin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SensitivityMargin/VBoxContainer"]
+layout_mode = 2
+text = "Sensitivity"
+
+[node name="SensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/SensitivityMargin/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 50.0
+allow_greater = true
+
 [node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_wcsk2")]
 layout_mode = 2
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SensitivityMargin/VBoxContainer/SensitivitySlider" to="MarginContainer/VBoxContainer/SensitivityMargin" method="_on_sensitivity_slider_value_changed"]
