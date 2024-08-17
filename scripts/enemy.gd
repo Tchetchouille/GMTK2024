@@ -33,7 +33,7 @@ func apply_gravity(_delta):
 		velocity.y -= gravity * _delta
 
 func move_towards_target(_delta):
-	if target and not in_knockback:
+	if is_on_floor() and target and not in_knockback:
 		if "scale_" in target:
 			speed = base_speed * target.scale_
 		var direction = calculate_direction_to_target(target)
@@ -81,12 +81,12 @@ func apply_knockback(normal: Vector3):
 func take_damage(damage: int = 100):
 	health -= damage
 	if health <= 0:
-		drop_gem()
+		#drop_gem()
 		emit_signal("enemy_died", self)
 		queue_free()
 		
-func drop_gem():
-	if gem_scene:
-		var gem_instance = gem_scene.instantiate() as Area3D
-		gem_instance.global_transform.origin = global_transform.origin  # Place the gem where the enemy is
-		get_parent().add_child(gem_instance)  # Add the gem to the scene
+#func drop_gem():
+	#if gem_scene:
+		#var gem_instance = gem_scene.instantiate() as Area3D
+		#gem_instance.global_transform.origin = global_transform.origin  # Place the gem where the enemy is
+		#get_parent().add_child(gem_instance)  # Add the gem to the scene

@@ -10,4 +10,3 @@ scale = 60.0
 model = ExtResource("1_dbnc8")
 max_occurrences = 4
 radius = 15.0
-damage = 100.0

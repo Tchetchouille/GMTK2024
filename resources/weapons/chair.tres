@@ -10,4 +10,3 @@ scale = 0.5
 model = ExtResource("1_f15lo")
 max_occurrences = 50
 radius = 1.0
-damage = 10.0
