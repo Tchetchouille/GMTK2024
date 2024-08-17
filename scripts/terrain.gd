@@ -5,6 +5,7 @@ class_name Terrain
 @export var map_size = 100
 var weapon_template = preload("res://scenes/weapon.tscn")
 var noise: FastNoiseLite
+var taken_spaces = Array()
 
 var weapons: Array[WeaponResource] = [
 	#preload("res://resources/mountain.tres"),
@@ -20,7 +21,6 @@ func _ready() -> void:
 	#noise = FastNoiseLite.new()
 	#noise.seed = randi()
 
-	var taken_spaces = Array()
 	for weapon_resource in weapons:
 		for _i in range(weapon_resource.max_occurrences):
 			var x = randi() % map_size - map_size / 2
@@ -40,18 +40,10 @@ func _ready() -> void:
 			if is_overlapped:
 				continue
 
-			print("Add weapon" + weapon_resource.name)
+			#print("Add weapon" + weapon_resource.name)
 			add_weapon(weapon_resource, Vector3(x, 0, y))
 			
 			taken_spaces.append(new_space)
-	#for x in range(100):
-		#for y in range(100):
-			#var val = noise.get_noise_2d(x, y)
-#
-			#if val > 0.4:
-				#print(val)
-				#add_weapon(weapons[1], Vector3(x, val*10, y))
-
 
 func add_weapon(weapon_resource: WeaponResource, position: Vector3):
 	var weapon = weapon_template.instantiate()
