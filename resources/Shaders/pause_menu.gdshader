@@ -1,3 +1,4 @@
+// Stolen from: https://www.reddit.com/r/godot/comments/uizzk8/how_can_i_blur_the_background_by_shapes_on_the/
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
