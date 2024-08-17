@@ -6,10 +6,13 @@ extends CharacterBody3D
 @export var knockback_duration: float = 0.5  # Knockback duration in seconds
 @export var target: CharacterBody3D
 
+
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
 var health: int = 500
+
+signal enemy_died
 
 func _physics_process(_delta):
 	apply_gravity(_delta)
@@ -71,4 +74,5 @@ func apply_knockback(normal: Vector3):
 func take_damage(damage: int = 100):
 	health -= damage
 	if health <= 0:
+		emit_signal("enemy_died", self)
 		queue_free()

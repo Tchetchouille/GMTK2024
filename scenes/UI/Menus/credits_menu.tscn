@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq2evglrw7l7q"]
 
 [ext_resource type="Theme" uid="uid://8veqnsenap2i" path="res://resources/Themes/credits_menu.tres" id="1_5gydj"]
-[ext_resource type="Script" path="res://scripts/UI/credits_menu.gd" id="2_o1pwk"]
+[ext_resource type="PackedScene" uid="uid://bwpo3fgr5lcwr" path="res://scenes/UI/Buttons/back_button.tscn" id="2_wt6f6"]
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5gydj")
-script = ExtResource("2_o1pwk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -49,8 +48,5 @@ Music:
 Sound Design:
 [/center]"
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_wt6f6")]
 layout_mode = 2
-text = "Back"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

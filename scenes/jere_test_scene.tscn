@@ -1,35 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://baohwh2gcg8kf"]
+[gd_scene load_steps=10 format=3 uid="uid://baohwh2gcg8kf"]
 
 [ext_resource type="PackedScene" uid="uid://bamqbdjk5ka5y" path="res://scenes/UI/Menus/main_menu.tscn" id="1_376a7"]
 [ext_resource type="PackedScene" uid="uid://dth5dyuvfj4gl" path="res://scenes/UI/general_ui.tscn" id="2_0phh2"]
+[ext_resource type="PackedScene" uid="uid://bxcrjhm2d573d" path="res://models/PROP_Sword.fbx" id="3_khkrq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_x1wuq"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_ulaid"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_elnul"]
+panorama = SubResource("CanvasTexture_ulaid")
+
+[sub_resource type="Sky" id="Sky_icps1"]
+sky_material = SubResource("PanoramaSkyMaterial_elnul")
+
+[sub_resource type="Environment" id="Environment_soui2"]
+background_mode = 1
+background_color = Color(0.356689, 0.581317, 0.703055, 1)
+sky = SubResource("Sky_icps1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1b12"]
+albedo_color = Color(0.537255, 0.686275, 0.537255, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rxl8c"]
+material = SubResource("StandardMaterial3D_c1b12")
 
 [node name="JereTestScene" type="Node"]
 
 [node name="MainMenu" parent="." instance=ExtResource("1_376a7")]
 
 [node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]
-visible = false
 
 [node name="MerdierDeTest" type="Node3D" parent="."]
 
-[node name="Cube" type="StaticBody3D" parent="MerdierDeTest"]
-transform = Transform3D(0.860306, 0, -0.509777, 0, 1, 0, 0.509777, 0, 0.860306, 7.34857, 0, -3.19711)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MerdierDeTest/Cube"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.918729, 0, -0.544395)
-mesh = SubResource("BoxMesh_x1wuq")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MerdierDeTest"]
+environment = SubResource("Environment_soui2")
 
 [node name="Camera3D" type="Camera3D" parent="MerdierDeTest"]
-transform = Transform3D(1, 0, 0, 0, 0.901855, 0.432039, 0, -0.432039, 0.901855, 0, 2.59274, 3.27965)
+transform = Transform3D(1, 0, 0, 0, 0.995026, 0.0996155, 0, -0.0996155, 0.995026, -0.183559, 0.180569, 0.286421)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="MerdierDeTest"]
-transform = Transform3D(1, 0, 0, 0, -0.6959, 0.718139, 0, -0.718139, -0.6959, 0, 0, 0)
+transform = Transform3D(-0.181583, -0.7062, -0.684331, -3.34559e-08, -0.6959, 0.718139, -0.983375, 0.130402, 0.126364, 0, 0, 0)
 
-[node name="Cube2" type="StaticBody3D" parent="MerdierDeTest"]
-transform = Transform3D(23.0657, 0, 0, 0, 0.373762, 0, 0, 0, 43.246, 0, -0.663527, 0)
+[node name="Floor" type="Node3D" parent="MerdierDeTest"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MerdierDeTest/Cube2"]
-mesh = SubResource("BoxMesh_x1wuq")
-skeleton = NodePath("../../Cube2")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MerdierDeTest/Floor"]
+mesh = SubResource("PlaneMesh_rxl8c")
+
+[node name="Sword" type="Node3D" parent="MerdierDeTest"]
+transform = Transform3D(0.509659, 0.287174, -0.811036, -0.0338994, 0.948623, 0.314588, 0.859708, -0.132839, 0.493209, -0.07559, 0, 0)
+
+[node name="PROP_Sword" parent="MerdierDeTest/Sword" instance=ExtResource("3_khkrq")]
+transform = Transform3D(0.929123, 0.0863936, 0.359537, -0.0879065, 0.996055, -0.0121737, -0.35917, -0.0202946, 0.933052, 0.0436879, 0.010512, -0.0295718)
