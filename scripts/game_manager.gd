@@ -51,11 +51,13 @@ func get_random_position_near_target() -> Vector3:
 	# Calculate the adjusted spawn radius
 	var adjusted_spawn_radius = spawn_radius * (1 + current_scale)
 
+	var sign_x = sign(randf() - 0.5)
+	var sign_z = sign(randf() - 0.5)
 	# Generate a random offset based on the adjusted radius
 	var random_offset = Vector3(
-		randf_range(-adjusted_spawn_radius, adjusted_spawn_radius),
-		70,  # Enemies spawn higher than the target
-		randf_range(-adjusted_spawn_radius, adjusted_spawn_radius)
+		max(randf_range(0, adjusted_spawn_radius), 20) * sign_x,
+		70,  # Enemies spawn higher than churches (prevents spawning inside buildings)
+		max(randf_range(0, adjusted_spawn_radius), 20) * sign_z
 	)
 	return target.global_transform.origin + random_offset
 

@@ -17,6 +17,14 @@ var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
 
+# https://kidscancode.org/godot_recipes/4.x/input/mouse_capture/
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	
