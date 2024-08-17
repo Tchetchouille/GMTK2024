@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4y02kp5q7cfb"]
+[gd_scene load_steps=8 format=3 uid="uid://c4y02kp5q7cfb"]
 
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewddu"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uiur8"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_7ce67"]
+material = SubResource("StandardMaterial3D_uiur8")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dtfg1"]
 radius = 1.5
@@ -15,6 +19,14 @@ size = Vector3(1.1225, 0.581055, 1)
 [node name="character" type="CharacterBody3D"]
 script = ExtResource("2_ro3ve")
 
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)
+top_level = true
+script = ExtResource("2_dgl5s")
+
+[node name="CharacterCamera3D" type="Camera3D" parent="CameraController"]
+fov = 37.8493
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ewddu")
@@ -22,9 +34,6 @@ shape = SubResource("BoxShape3D_ewddu")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_7ce67")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 4)
 
 [node name="CollisionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

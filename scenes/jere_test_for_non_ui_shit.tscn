@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6sod8sree021"]
+
+[ext_resource type="PackedScene" uid="uid://c4y02kp5q7cfb" path="res://scenes/Character.tscn" id="1_mby6i"]
+[ext_resource type="PackedScene" uid="uid://dbbbli60c0rfc" path="res://scenes/JoelScene/enemy.tscn" id="4_yk8s3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6qwi"]
+albedo_color = Color(0.403249, 0.614658, 0.440556, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4y123"]
+material = SubResource("StandardMaterial3D_n6qwi")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eqs4s"]
+
+[node name="JereTestForNonUIShit" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.425448, -0.553522, 0.715967, 0, 0.791138, 0.611637, -0.904983, -0.26022, 0.336588, 0, 4.71518, 0)
+light_color = Color(0.74902, 0, 0.152941, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.361118, 0.425988, -0.829535, 0.0434941, 0.896288, 0.441334, 0.931505, 0.123294, -0.342194, -7.82161, 4.71518, 0)
+light_color = Color(0, 0.568627, 0.933333, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4y123")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_eqs4s")
+
+[node name="character" parent="." instance=ExtResource("1_mby6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.89843)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_yk8s3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.72034, -27.105)
+target = NodePath("../character")
