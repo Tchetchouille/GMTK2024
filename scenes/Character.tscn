@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=8 format=3 uid="uid://c4y02kp5q7cfb"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://ywenk7jinwf5"]
+>>>>>>> 4be770388acb4722e3ae2e3527f28584f6f6473a
 
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]

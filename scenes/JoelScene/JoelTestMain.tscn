@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="1_3q4qd"]
 [ext_resource type="PackedScene" uid="uid://btib4g3wvigur" path="res://scenes/JoelScene/fake_player.tscn" id="2_otqmo"]
 [ext_resource type="PackedScene" uid="uid://dbbbli60c0rfc" path="res://scenes/JoelScene/enemy.tscn" id="3_u3j4u"]
-[ext_resource type="PackedScene" uid="uid://ddalkcdba2pl8" path="res://scenes/game_manager.tscn" id="4_w0drh"]
+[ext_resource type="PackedScene" uid="uid://cbt3ha0evrej7" path="res://scenes/game_manager.tscn" id="4_w0drh"]
 
 [node name="main" type="Node"]
 
