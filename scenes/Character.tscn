@@ -32,5 +32,5 @@ shape = SubResource("BoxShape3D_ewddu")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("BoxMesh_7ce67")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.875346, 0.483496, 0, -0.483496, 0.875346, 0, 1.95637, 2.76709)
+[node name="Camera3D" type="Camera3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 4)
