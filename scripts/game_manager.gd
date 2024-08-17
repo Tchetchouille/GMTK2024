@@ -1,7 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene  # The scene resource of the enemy
-@export var spawn_radius: float = 60.0  # Radius around the target where enemies will spawn
+@export var spawn_radius: float = 80.0  # Radius around the target where enemies will spawn
 @export var number_of_enemies: int = 5  # Number of enemies to spawn
 @export var target: CharacterBody3D  # The target that enemies should move towards
 @export var scale_variation: float = 0.2  # Variation factor for enemy scale
@@ -46,7 +46,7 @@ func get_scaled_enemy() -> Vector3:
 func get_random_position_near_target() -> Vector3:
 	var random_offset = Vector3(
 		randf_range(-spawn_radius, spawn_radius),
-		0,  # enemies spawn on the same height as the target
+		70,  # enemies spawn higher than the target
 		randf_range(-spawn_radius, spawn_radius)
 	)
 	return target.global_transform.origin + random_offset
