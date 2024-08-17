@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccljqpgs6rvmu"]
+
+[ext_resource type="PackedScene" uid="uid://b2dwo500p3wyl" path="res://models/PROP_Needle.fbx" id="1_ccxaa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjy3e"]
+radius = 0.002
+height = 0.05
+
+[node name="PROP_Needle" instance=ExtResource("1_ccxaa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_hjy3e")

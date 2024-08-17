@@ -3,7 +3,7 @@ extends Node3D
 class_name Weapon
 
 
-@onready var mesh_instance = $StaticBody3D/MeshInstance3D
+#@onready var mesh_instance = $StaticBody3D/MeshInstance3D
 @export var resource: WeaponResource:
 	get:
 		return resource
@@ -11,11 +11,9 @@ class_name Weapon
 		set_resource(value)
 
 func set_resource(res: WeaponResource):
-	await self.ready
-	mesh_instance.mesh = res.model
-
-	# create collision shape from the mesh
-	mesh_instance.create_trimesh_collision()
+	#await self.ready
+	var model = res.model.instantiate()
+	add_child(model)
 
 func pick_up():
 	# Function to be called by character when picking up this weapon

@@ -4,8 +4,3 @@
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_x6qqt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-skeleton = NodePath("../..")

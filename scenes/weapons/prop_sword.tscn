@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0f4pds0wpp2a"]
+
+[ext_resource type="PackedScene" uid="uid://bxcrjhm2d573d" path="res://models/PROP_Sword.fbx" id="1_mtf3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x5m0"]
+radius = 0.04
+height = 0.6
+
+[node name="PROP_Sword" instance=ExtResource("1_mtf3y")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_8x5m0")
