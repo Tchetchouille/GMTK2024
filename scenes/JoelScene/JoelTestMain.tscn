@@ -20,4 +20,4 @@ target = NodePath("../FakePlayer")
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 4.65002, 4.68342)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42393, 41.0667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42393, 49.3284)
