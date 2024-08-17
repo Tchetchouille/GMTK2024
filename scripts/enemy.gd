@@ -9,6 +9,7 @@ extends CharacterBody3D
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
+var health: int = 500
 
 func _physics_process(_delta):
 	apply_gravity(_delta)
@@ -53,12 +54,21 @@ func handle_collision():
 		
 		if collider == target and not in_knockback:
 			var collision_normal = collision.get_normal()
+			# Apply knockback if method exists in target
 			if target.has_method('apply_knockback'):
 				apply_knockback(collision_normal)
 				target.apply_knockback(-collision_normal)
+			# Apply damage if method exists in target
+			if target.has_method('take_damage'):
+				target.take_damage()
 
 func apply_knockback(normal: Vector3):
 	# Apply knockback
 	knockback_velocity = normal * knockback_strength
 	knockback_timer = knockback_duration
 	in_knockback = true  # Set knockback state to true
+
+func take_damage(damage: int = 100):
+	health -= damage
+	if health <= 0:
+		queue_free()
