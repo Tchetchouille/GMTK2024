@@ -11,6 +11,7 @@ class_name Weapon
 		set_resource(value)
 
 func set_resource(res: WeaponResource):
+	await self.ready
 	mesh_instance.mesh = res.model
 
 	# create collision shape from the mesh
