@@ -8,6 +8,7 @@ class_name Weapon
 	get:
 		return resource
 	set(value):
+		resource = value
 		set_resource(value)
 
 func set_resource(res: WeaponResource):

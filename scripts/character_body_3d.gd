@@ -20,7 +20,7 @@ func _physics_process(delta):
 	if is_picking_up:
 		if Input.is_action_just_pressed("click_action") :
 			pickup_progress += 10
-
+			print(pickup_progress)
 			if pickup_progress > 100:
 				current_weapon_resource = picking_up_weapon.pick_up()
 				pickup_progress = 0
@@ -59,21 +59,19 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-
-	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
 func _on_collision_area_body_entered(body):
-	print("Entered")
+	#print("Entered")
 	var weapon = body.get_parent().get_parent()
 	if weapon is Weapon :
 		print("Entered weapon")
 		weapons_in_range.append(weapon)
 
 func _on_collision_area_body_exited(body):
-	print("Exited")
+	#print("Exited")
 	var weapon = body.get_parent().get_parent()
 	if weapon is Weapon :
 		print("Exited weapon")
