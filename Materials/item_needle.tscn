@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ltulp5aq7cna"]
-
-[ext_resource type="PackedScene" uid="uid://dhhrgux8vgaux" path="res://models/ITEM_Needle.fbx" id="1_qn41t"]
-[ext_resource type="Material" uid="uid://clane1b3w2sd4" path="res://Materials/Metal.tres" id="2_o61fd"]
-
-[node name="ITEM_Needle" instance=ExtResource("1_qn41t")]
-
-[node name="Needle" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_o61fd")

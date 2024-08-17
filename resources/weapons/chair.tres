@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://rcir0a1gphma"]
+
+[ext_resource type="PackedScene" uid="uid://bkm2a81lc12kn" path="res://scenes/weapons/prop_chair.tscn" id="1_f15lo"]
+[ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="2_mp8id"]
+
+[resource]
+script = ExtResource("2_mp8id")
+name = "Chair"
+scale = 0.5
+model = ExtResource("1_f15lo")
+max_occurrences = 50
+radius = 1.0

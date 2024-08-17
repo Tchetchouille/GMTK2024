@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yoi5xo4fbcto"]
 
 [ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="1_nfvie"]
-[ext_resource type="PackedScene" uid="uid://c4y02kp5q7cfb" path="res://scenes/Character.tscn" id="2_ge8hq"]
+[ext_resource type="PackedScene" uid="uid://ywenk7jinwf5" path="res://scenes/Character.tscn" id="2_ge8hq"]
 [ext_resource type="PackedScene" uid="uid://dbbbli60c0rfc" path="res://scenes/JoelScene/enemy.tscn" id="3_7w8k5"]
 
 [node name="Main" type="Node3D"]

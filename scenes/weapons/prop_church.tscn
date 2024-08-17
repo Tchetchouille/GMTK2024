@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvnjotreh65bq"]
+
+[ext_resource type="PackedScene" uid="uid://fv6hrfyci1h0" path="res://models/WIP_PROP_Church.fbx" id="1_gri37"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7186p"]
+size = Vector3(7, 75, 7)
+
+[node name="PROP_Church" instance=ExtResource("1_gri37")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_7186p")

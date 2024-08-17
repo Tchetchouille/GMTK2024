@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ywenk7jinwf5" path="res://scenes/Character.tscn" id="1_o8ce0"]
 [ext_resource type="PackedScene" uid="uid://c4qxc2r4tnvva" path="res://scenes/weapon.tscn" id="2_7tshf"]
-[ext_resource type="Resource" uid="uid://beju6naak158i" path="res://resources/mountain.tres" id="3_uvvxc"]
+[ext_resource type="Resource" uid="uid://beju6naak158i" path="res://resources/weapons/mountain.tres" id="3_uvvxc"]
 [ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="4_ywacn"]
-[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/bone.tres" id="5_yxvf3"]
+[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/weapons/needle.tres" id="5_yxvf3"]
 
 [node name="TestChar" type="Node3D"]
 

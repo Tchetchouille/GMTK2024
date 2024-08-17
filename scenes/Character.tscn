@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ywenk7jinwf5"]
 
-[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/bone.tres" id="2_juvo0"]
+[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/weapons/needle.tres" id="2_juvo0"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewddu"]

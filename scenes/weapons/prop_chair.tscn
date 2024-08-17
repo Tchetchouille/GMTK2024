@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkm2a81lc12kn"]
+
+[ext_resource type="PackedScene" uid="uid://c0y0jekrdown4" path="res://models/PROP_Chair.fbx" id="1_2pluu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xr1d"]
+radius = 0.025
+height = 0.28
+
+[node name="PROP_Chair" instance=ExtResource("1_2pluu")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_8xr1d")

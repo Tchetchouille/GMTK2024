@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://dcgc6l10oi7wc"]
+
+[ext_resource type="PackedScene" uid="uid://ccljqpgs6rvmu" path="res://scenes/weapons/prop_needle.tscn" id="1_a4b5y"]
+[ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="2_wd1r1"]
+
+[resource]
+script = ExtResource("2_wd1r1")
+name = "Needle"
+scale = 0.01
+model = ExtResource("1_a4b5y")
+max_occurrences = 10
+radius = 1.0
