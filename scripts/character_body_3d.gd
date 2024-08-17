@@ -121,7 +121,7 @@ func attack() :
 	for enemy in enemies :
 		if enemy.has_method("take_damage") :
 			enemy.take_damage(current_weapon_resource.scale)
-			print("Ouch") 
+			print("Ouch")
 
 func get_fat():
 	scale_ += scale_increment;

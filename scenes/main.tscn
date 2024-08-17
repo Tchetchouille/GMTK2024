@@ -11,6 +11,7 @@
 [node name="Terrain" parent="." instance=ExtResource("1_nfvie")]
 
 [node name="Character" parent="." instance=ExtResource("2_ge8hq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 current_weapon_resource = ExtResource("3_1t6ca")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
