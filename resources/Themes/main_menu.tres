@@ -1,12 +1,21 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dm3fofnyu8ox1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmv52"]
+content_margin_left = 50.0
+content_margin_top = 8.0
+content_margin_bottom = 10.0
 bg_color = Color(0.312242, 0.440593, 0.508511, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6es7m"]
+content_margin_left = 50.0
+content_margin_top = 8.0
+content_margin_bottom = 10.0
 bg_color = Color(0.145683, 0.222687, 0.263806, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i1tb"]
+content_margin_left = 50.0
+content_margin_top = 8.0
+content_margin_bottom = 10.0
 bg_color = Color(0.0985095, 0.15927, 0.189629, 1)
 
 [resource]

@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4fycjv15m4l2"]
+[gd_scene load_steps=3 format=3 uid="uid://b4fycjv15m4l2"]
 
 [ext_resource type="Theme" uid="uid://cqu6jlcef4qae" path="res://resources/Themes/settings_menu.tres" id="1_o7d18"]
 [ext_resource type="PackedScene" uid="uid://bwpo3fgr5lcwr" path="res://scenes/UI/Buttons/back_button.tscn" id="1_wcsk2"]
-
-[sub_resource type="GDScript" id="GDScript_f71lm"]
-script/source = "extends Control
-
-func _on_back_button_pressed() -> void:
-	$\"../../..\".queue_free()"
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -25,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.196078)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -43,6 +37,4 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 
 [node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_wcsk2")]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-script = SubResource("GDScript_f71lm")

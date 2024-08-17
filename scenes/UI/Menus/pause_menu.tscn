@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c28e2dvfnsntu"]
+[gd_scene load_steps=8 format=3 uid="uid://c28e2dvfnsntu"]
 
 [ext_resource type="Theme" uid="uid://bumu0uo8y0cm6" path="res://resources/Themes/pause_menu.tres" id="1_ha31u"]
 [ext_resource type="PackedScene" uid="uid://ofgmtbsn8vv3" path="res://scenes/UI/Buttons/settings_button.tscn" id="1_j1e4u"]
 [ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="1_vlb6b"]
 [ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="2_fxhfq"]
 [ext_resource type="Shader" path="res://resources/Shaders/pause_menu.gdshader" id="3_3osjw"]
+[ext_resource type="PackedScene" uid="uid://b4fycjv15m4l2" path="res://scenes/UI/Menus/settings_menu.tscn" id="6_3662a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qvog"]
 shader = ExtResource("3_3osjw")
@@ -59,5 +60,8 @@ layout_mode = 2
 
 [node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_fxhfq")]
 layout_mode = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("6_3662a")]
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

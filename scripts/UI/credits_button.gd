@@ -1,8 +1,7 @@
 extends Control
 
-var credits_menu = preload("res://scenes/UI/Menus/credits_menu.tscn")
+@onready var credits_menu = $"../../../CreditsMenu"
 
 # Opening Credits when setting button is pressed.	
 func _on_button_pressed() -> void:
-	var instance = credits_menu.instantiate()
-	$"../../..".add_child(instance)
+	credits_menu.show()

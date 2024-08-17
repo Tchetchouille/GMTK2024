@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bamqbdjk5ka5y"]
+[gd_scene load_steps=11 format=3 uid="uid://bamqbdjk5ka5y"]
 
 [ext_resource type="Theme" uid="uid://dm3fofnyu8ox1" path="res://resources/Themes/main_menu.tres" id="1_gc4hb"]
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_gw4m3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://resources/Shaders/main_menu.gdshader" id="3_7k53c"]
 [ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="3_eyqqu"]
 [ext_resource type="PackedScene" uid="uid://b82obejhvti3m" path="res://scenes/UI/Buttons/credits_button.tscn" id="4_8hv2g"]
+[ext_resource type="PackedScene" uid="uid://b4fycjv15m4l2" path="res://scenes/UI/Menus/settings_menu.tscn" id="7_l5ba0"]
+[ext_resource type="PackedScene" uid="uid://dq2evglrw7l7q" path="res://scenes/UI/Menus/credits_menu.tscn" id="8_dkmlh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmwon"]
 shader = ExtResource("3_7k53c")
@@ -36,13 +38,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleMargin" type="MarginContainer" parent="."]
+[node name="TitleMargin" type="MarginContainer" parent="Background"]
 layout_mode = 0
+offset_right = 503.0
+offset_bottom = 160.0
 theme = SubResource("Theme_1qur5")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 
-[node name="Label" type="Label" parent="TitleMargin"]
+[node name="Label" type="Label" parent="Background/TitleMargin"]
 layout_mode = 2
 text = "GAME TITLE"
 
@@ -51,17 +55,19 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -232.0
+offset_top = -402.0
 offset_right = 400.0
 grow_vertical = 0
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuMargin"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="PlayButton" type="Button" parent="MenuMargin/VBoxContainer"]
 layout_mode = 2
 text = "Play"
+alignment = 0
 
 [node name="SettingsButton" parent="MenuMargin/VBoxContainer" instance=ExtResource("2_ofhes")]
 layout_mode = 2
@@ -71,5 +77,11 @@ layout_mode = 2
 
 [node name="QuitButton" parent="MenuMargin/VBoxContainer" instance=ExtResource("3_eyqqu")]
 layout_mode = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("7_l5ba0")]
+layout_mode = 1
+
+[node name="CreditsMenu" parent="." instance=ExtResource("8_dkmlh")]
+layout_mode = 1
 
 [connection signal="pressed" from="MenuMargin/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
