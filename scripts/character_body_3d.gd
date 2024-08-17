@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @export var speed = 10.0
 @export var inactivity_pickup_loss: float = 10
-@export var scale_increment: float = 0.01
 @export var current_weapon_resource: WeaponResource
 @export var knockback_strength: float = 100.0
 @export var knockback_duration: float = 0.5
@@ -14,7 +13,6 @@ var weapons_in_range = []
 var is_picking_up = false
 var pickup_progress: float = 0
 var picking_up_weapon = null
-var scale_: float = 0.12
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
@@ -35,6 +33,10 @@ func _physics_process(delta):
 		else:
 			# loose progress if not clicking
 			pickup_progress -= inactivity_pickup_loss * delta
+			if pickup_progress >= 0:
+				pickup_progress = 0
+				picking_up_weapon = null
+				is_picking_up = false
 
 		# Don't continue with the rest of the inputs
 		return
@@ -72,10 +74,8 @@ func _unhandled_input(event):
 func apply_knockback_effect(_delta):
 	if knockback_timer > 0:
 		knockback_timer -= _delta
-		print("Applying knockback: ", knockback_velocity, " Timer: ", knockback_timer)
 		velocity += knockback_velocity * _delta
 		if knockback_timer <= 0:
-			print("Knockback effect ended.")
 			knockback_velocity = Vector3.ZERO
 			in_knockback = false  # End knockback state
 
@@ -84,7 +84,6 @@ func apply_knockback(normal: Vector3):
 	knockback_velocity = normal * knockback_strength
 	knockback_timer = knockback_duration
 	in_knockback = true  # Set knockback state to true
-	print("Knockback applied with velocity: ", knockback_velocity, " Duration: ", knockback_timer)
 
 func _on_collision_area_body_entered(body):
 	#print("Entered")
@@ -122,9 +121,3 @@ func attack() :
 		if enemy.has_method("take_damage") :
 			enemy.take_damage(current_weapon_resource.scale)
 			print("Ouch")
-
-func get_fat():
-	scale_ += scale_increment;
-	#scale.x = scale_
-	#scale.y = scale_
-	#scale.z = scale_

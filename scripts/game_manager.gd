@@ -4,11 +4,14 @@ extends Node
 @export var spawn_radius: float = 80.0  # Radius around the target where enemies will spawn
 @export var number_of_enemies: int = 1  # Number of enemies to spawn
 @export var target: CharacterBody3D  # The target that enemies should move towards
+@export var terrain: Terrain = null
 @export var scale_variation: float = 0.2  # Variation factor for enemy scale
+@export var scale_increment: float = 0.01 # scale increment factor when enemy killed
 
 var pause_menu = preload("res://scenes/UI/Menus/pause_menu.tscn")
 
 var enemies: Array = []
+var current_scale: float = 0.12
 
 func _ready():
 	spawn_enemies()
@@ -45,10 +48,8 @@ func get_scaled_enemy() -> Vector3:
 
 func get_random_position_near_target() -> Vector3:
 	# Access the player's scale_ variable
-	var player_scale = target.scale_  # Assuming target is the player
-
 	# Calculate the adjusted spawn radius
-	var adjusted_spawn_radius = spawn_radius * player_scale
+	var adjusted_spawn_radius = spawn_radius * (1 + current_scale)
 
 	# Generate a random offset based on the adjusted radius
 	var random_offset = Vector3(
@@ -61,5 +62,36 @@ func get_random_position_near_target() -> Vector3:
 
 func _on_enemy_died(enemy_instance: CharacterBody3D):
 	enemies.erase(enemy_instance)
+
+	
+	var scale_amount = current_scale * scale_increment
+	scale_everything(scale_amount)
+	
 	if enemies.size() == 0:
 		spawn_enemies()
+
+
+func scale_everything(amount: float):
+	## Scale world
+	# Get the player's position
+	var player_pos = target.transform.origin
+	
+	# Calculate the direction vector from the terrain to the player
+	var to_player = terrain.transform.origin - player_pos
+	
+	# Store the old scale
+	var old_scale = terrain.scale
+	
+	# Scale down the terrain
+	terrain.scale -= Vector3.ONE * amount
+	
+	
+	# Calculate the scale ratio (to adjust the terrain position)
+	var scale_ratio = terrain.scale / old_scale
+	
+	# Adjust the terrain's position so it scales towards the player
+	terrain.transform.origin = player_pos + to_player * scale_ratio
+	
+	
+	for enemy in enemies:
+		enemy.scale * scale_ratio

@@ -10,14 +10,14 @@ extends CharacterBody3D
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
-var health: int = 0  # Health will be set based on the scale value 
+var health: float = 0  # Health will be set based on the scale value 
 var speed: float = base_speed  # Speed will be adjusted based on target's scale_
 
 signal enemy_died
 
 func _ready():
 	# Set enemy's health based on its scale 
-	health = int(transform.basis.get_scale().length())
+	health = scale.x
 
 func _physics_process(_delta):
 	apply_gravity(_delta)

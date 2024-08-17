@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_wd1r1")
 name = "Needle"
-scale = 0.05
+scale = 2000.0
 model = ExtResource("1_a4b5y")
 max_occurrences = 10
 radius = 0.5
+damage = 1.0
