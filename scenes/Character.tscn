@@ -15,7 +15,7 @@ material = SubResource("StandardMaterial3D_uiur8")
 radius = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrq71"]
-size = Vector3(1.1225, 0.581055, 1)
+size = Vector3(1.122, 1, 1)
 
 [node name="character" type="CharacterBody3D"]
 script = ExtResource("2_ro3ve")

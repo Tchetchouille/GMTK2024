@@ -2,7 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene  # The scene resource of the enemy
 @export var spawn_radius: float = 80.0  # Radius around the target where enemies will spawn
-@export var number_of_enemies: int = 10  # Number of enemies to spawn
+@export var number_of_enemies: int = 1  # Number of enemies to spawn
 @export var target: CharacterBody3D  # The target that enemies should move towards
 @export var terrain: Terrain = null
 @export var scale_variation: float = 0.2  # Variation factor for enemy scale
@@ -26,23 +26,21 @@ func _process(_delta: float) -> void:
 func spawn_enemies():
 	for i in range(number_of_enemies):
 		var enemy_instance = enemy_scene.instantiate() as CharacterBody3D
-		add_child(enemy_instance)  # Add the instance to the scene tree first
+		
 		var random_position = get_random_position_near_target()
 		enemy_instance.global_transform.origin = random_position
-		enemy_instance.scale = get_scaled_enemy()
+		var relative_scale = randf_range(1.0 - scale_variation, 1.0 + scale_variation)
+		enemy_instance.scale_ = relative_scale * current_scale
+		enemy_instance.scale = Vector3.ONE * relative_scale
 		enemy_instance.target = target  # Set the target for the enemy
+		add_child(enemy_instance)  # Add the instance to the scene tree
 		enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))  # Connect the signal
 		enemies.append(enemy_instance)
 
 
-func get_scaled_enemy() -> Vector3:
-	var target_scale = target.scale
+func get_scaled_enemy():
 	var random_factor = randf_range(1.0 - scale_variation, 1.0 + scale_variation)
-	var uniform_scale = Vector3(
-		target_scale.x * random_factor,
-		target_scale.y * random_factor,
-		target_scale.z * random_factor
-	)
+	var uniform_scale = 1 * random_factor
 	return uniform_scale
 
 
@@ -86,8 +84,7 @@ func scale_everything(amount: float):
 	
 	# Scale down the terrain
 	terrain.scale -= Vector3.ONE * amount
-	
-	
+
 	# Calculate the scale ratio (to adjust the terrain position)
 	var scale_ratio = terrain.scale / old_scale
 	

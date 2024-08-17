@@ -25,7 +25,7 @@ func _ready() -> void:
 	# Prevent stuff from spawning at the center (on the player)
 	taken_spaces.append({
 		"pos": Vector2(0, 0),
-		"r": 1
+		"r": 5
 	})
 
 	# scale as if the character was 12cm high
@@ -54,28 +54,6 @@ func _ready() -> void:
 			add_weapon(weapon_resource, Vector3(x, 0, y))
 			
 			taken_spaces.append(new_space)
-
-#func _process(delta):
-	#if player:
-		## Get the player's position
-		#var player_pos = player.transform.origin
-		#
-		## Calculate the direction vector from the terrain to the player
-		#var to_player = transform.origin - player_pos
-		#
-		## Store the old scale
-		#var old_scale = scale
-		#
-		## Scale down the terrain
-		#scale -= Vector3.ONE * delta * 0.05
-		#if scale.is_zero_approx():
-			#scale = Vector3.ZERO
-		#
-		## Calculate the scale ratio (to adjust the terrain position)
-		#var scale_ratio = scale / old_scale
-		#
-		## Adjust the terrain's position so it scales towards the player
-		#transform.origin = player_pos + to_player * scale_ratio
 
 func add_weapon(weapon_resource: WeaponResource, position: Vector3):
 	var weapon = weapon_template.instantiate()

@@ -21,5 +21,6 @@ transform = Transform3D(1, 0, 0, 0, -0.306925, 0.951734, 0, -0.951734, -0.306925
 [node name="GameManager" parent="." node_paths=PackedStringArray("target", "terrain") instance=ExtResource("4_xji4p")]
 enemy_scene = ExtResource("3_7w8k5")
 spawn_radius = 20.0
+number_of_enemies = 10
 target = NodePath("../Character")
 terrain = NodePath("../Terrain")
