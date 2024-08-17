@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://dcgc6l10oi7wc"]
+
+[ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="1_ooovl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4esct"]
+
+[resource]
+script = ExtResource("1_ooovl")
+name = "Bone"
+scale = 1.0
+model = SubResource("BoxMesh_4esct")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4qxc2r4tnvva"]
+
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_x6qqt"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_x6qqt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+skeleton = NodePath("../..")
