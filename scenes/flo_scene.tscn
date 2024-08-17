@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7fts27cgd051"]
 
 [ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="1_1x8q5"]
-[ext_resource type="PackedScene" uid="uid://c4y02kp5q7cfb" path="res://scenes/Character.tscn" id="2_wh3hq"]
+[ext_resource type="PackedScene" uid="uid://ywenk7jinwf5" path="res://scenes/Character.tscn" id="2_wh3hq"]
 
 [node name="FloScene" type="Node3D"]
 

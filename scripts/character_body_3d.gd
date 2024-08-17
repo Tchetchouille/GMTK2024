@@ -72,6 +72,14 @@ func _physics_process(delta):
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
 	
+	# Walking sound logic
+	if direction != Vector3.ZERO:
+		if not $WalkingSound.playing:
+			$WalkingSound.play()
+	else:
+		if $WalkingSound.playing:
+			$WalkingSound.stop()
+	
 	apply_knockback_effect(delta)
 	move_and_slide()
 
@@ -122,6 +130,9 @@ func pickup_weapon() :
 
 func attack() :
 	if not current_weapon_resource: return
+	
+	# Play the attack sound
+	$AttackSound.play()
 
 	var enemies = $AttackArea.get_overlapping_bodies()
 	print("Attack!")
