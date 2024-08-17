@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var inactivity_pickup_loss: float = 10
 @export var scale_increment: float = 0.01
 @export var current_weapon_resource: WeaponResource
+@export var knockback_strength: float = 100.0
+@export var knockback_duration: float = 0.5
 
 @onready var mouse_sensitivity = 0.01#get_var("look-sensitivity")
 
@@ -13,6 +15,9 @@ var is_picking_up = false
 var pickup_progress: float = 0
 var picking_up_weapon = null
 var scale_: float = 0.12
+var knockback_timer: float = 0.0
+var knockback_velocity: Vector3 = Vector3.ZERO
+var in_knockback: bool = false  # Track if the character is currently being knocked back
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -48,20 +53,38 @@ func _physics_process(delta):
 			pickup_weapon()
 		else :
 			attack()
-		
+
 	var movement_dir = transform.basis * Vector3(direction.x, 0, direction.z)
-		
+
 	if direction != Vector3.ZERO :
 		direction = direction.normalized()
 		
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
 	
+	apply_knockback_effect(delta)
 	move_and_slide()
-	
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
+
+func apply_knockback_effect(_delta):
+	if knockback_timer > 0:
+		knockback_timer -= _delta
+		print("Applying knockback: ", knockback_velocity, " Timer: ", knockback_timer)
+		velocity += knockback_velocity * _delta
+		if knockback_timer <= 0:
+			print("Knockback effect ended.")
+			knockback_velocity = Vector3.ZERO
+			in_knockback = false  # End knockback state
+
+func apply_knockback(normal: Vector3):
+	# Apply knockback
+	knockback_velocity = normal * knockback_strength
+	knockback_timer = knockback_duration
+	in_knockback = true  # Set knockback state to true
+	print("Knockback applied with velocity: ", knockback_velocity, " Duration: ", knockback_timer)
 
 func _on_collision_area_body_entered(body):
 	#print("Entered")
