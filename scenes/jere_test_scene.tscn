@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://baohwh2gcg8kf"]
+[gd_scene load_steps=4 format=3 uid="uid://baohwh2gcg8kf"]
 
 [ext_resource type="PackedScene" uid="uid://bamqbdjk5ka5y" path="res://scenes/UI/Menus/main_menu.tscn" id="1_376a7"]
 [ext_resource type="PackedScene" uid="uid://dth5dyuvfj4gl" path="res://scenes/UI/general_ui.tscn" id="2_0phh2"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_x1wuq"]
+
 [node name="JereTestScene" type="Node"]
 
 [node name="MainMenu" parent="." instance=ExtResource("1_376a7")]
+visible = false
 
 [node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]
+
+[node name="MerdierDeTest" type="Node3D" parent="."]
+
+[node name="Cube" type="StaticBody3D" parent="MerdierDeTest"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MerdierDeTest/Cube"]
+mesh = SubResource("BoxMesh_x1wuq")
+
+[node name="Camera3D" type="Camera3D" parent="MerdierDeTest"]
+transform = Transform3D(1, 0, 0, 0, 0.901855, 0.432039, 0, -0.432039, 0.901855, 0, 2.59274, 3.27965)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MerdierDeTest"]
+transform = Transform3D(1, 0, 0, 0, -0.00216417, 0.999998, 0, -0.999998, -0.00216417, 0, 0, 0)
