@@ -2,10 +2,11 @@ extends CharacterBody3D
 
 @export var speed = 10.0
 @export var mouse_sensitivity = 0.01
-@export var current_weapon_resource : WeaponResource
 
 var target_velocity = Vector3.ZERO
 var weapons_in_range = []
+var current_weapon_resource = null
+
 
 func _physics_process(delta):
 	
@@ -21,7 +22,8 @@ func _physics_process(delta):
 		direction.x -= 1
 		
 	if Input.is_action_just_pressed("click_action") :
-		pickup_weapon()
+		if weapons_in_range :
+			pickup_weapon()
 		
 	var movement_dir = transform.basis * Vector3(direction.x, 0, direction.z)
 		
@@ -41,29 +43,32 @@ func _unhandled_input(event):
 
 func _on_collision_area_body_entered(body):
 	print("Entered")
-	if body.get_parent() is Weapon :
+	if body.get_parent().get_parent().get_parent() is Weapon :
 		print("Entered weapon")
 		weapons_in_range.append(body.get_parent())
 
 func _on_collision_area_body_exited(body):
 	print("Exited")
-	if body.get_parent() is Weapon :
+	if body.get_parent().get_parent().get_parent() is Weapon :
 		print("Exited weapon")
 		weapons_in_range.erase(body.get_parent())
 
 func pickup_weapon() :
-	var min = INF
+	var min_distance = INF
 	var closest_weapon = null
-	
-	#Pick closest weapon 
 	for weapon in weapons_in_range:
 		var distance = transform.origin.distance_to(weapon.transform.origin)
-		if distance < min :
-			min = distance
+		if distance < min_distance :
+			min_distance = distance
 			closest_weapon = weapon
-	current_weapon_resource = closest_weapon.pick_up()
 	
-
+	var pickup_progress = 0
 	
+	while(pickup_progress < 100) :
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) :
+			pickup_progress += 10
+		
+		
 	
+	current_weapon_resource = closest_weapon.get_parent().get_parent().pick_up()
 	

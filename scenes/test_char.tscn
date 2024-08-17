@@ -1,25 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2sbju3rg8q1s"]
+[gd_scene load_steps=5 format=3 uid="uid://d2sbju3rg8q1s"]
 
 [ext_resource type="PackedScene" uid="uid://ywenk7jinwf5" path="res://scenes/Character.tscn" id="1_o8ce0"]
 [ext_resource type="PackedScene" uid="uid://c4qxc2r4tnvva" path="res://scenes/weapon.tscn" id="2_7tshf"]
+<<<<<<< Updated upstream
 [ext_resource type="Resource" uid="uid://beju6naak158i" path="res://resources/weapons/mountain.tres" id="3_uvvxc"]
 [ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="4_ywacn"]
 [ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/weapons/needle.tres" id="5_yxvf3"]
+=======
+[ext_resource type="Resource" uid="uid://bwg41iohtrfi3" path="res://resources/church.tres" id="4_0w5o8"]
+[ext_resource type="PackedScene" uid="uid://bb5dyhed3iijo" path="res://scenes/terrain.tscn" id="4_ywacn"]
+>>>>>>> Stashed changes
 
 [node name="TestChar" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 34, 0)
 
-[node name="Weapon" parent="." instance=ExtResource("2_7tshf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, 1, 15.195)
-resource = ExtResource("3_uvvxc")
-
 [node name="Terrain" parent="." instance=ExtResource("4_ywacn")]
 
 [node name="character" parent="." instance=ExtResource("1_o8ce0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Weapon2" parent="." instance=ExtResource("2_7tshf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1303, 0, 6.42492)
-resource = ExtResource("5_yxvf3")
+[node name="Weapon" parent="." instance=ExtResource("2_7tshf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3429, 0.182225, 0)
+resource = ExtResource("4_0w5o8")
