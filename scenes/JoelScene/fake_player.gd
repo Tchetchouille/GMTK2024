@@ -13,6 +13,7 @@ var angle: float = 0.0
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
+var scale_: float = 1
 
 func apply_knockback_effect(_delta):
 	if knockback_timer > 0:
