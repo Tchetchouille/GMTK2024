@@ -18,5 +18,5 @@ func set_resource(res: WeaponResource):
 func pick_up():
 	# Function to be called by character when picking up this weapon
 	# from the ground.
-	queue_free()
+	call_deferred("queue_free")
 	return resource

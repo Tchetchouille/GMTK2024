@@ -8,6 +8,9 @@ height = 0.6
 
 [node name="PROP_Sword" instance=ExtResource("1_mtf3y")]
 
+[node name="Sword_ENV" parent="." index="0"]
+transform = Transform3D(-3, -4.52987e-07, 0, 4.52987e-07, -3, 0, 0, 0, 3, 3.9443e-33, -0.000441797, 0)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
