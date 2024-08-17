@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const MOUSE_SENSITIVITY = 0.1
+const MOUSE_SENSITIVITY = 0.01
 
 var target_velocity = Vector3.ZERO
 
