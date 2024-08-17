@@ -85,7 +85,7 @@ func take_damage(damage: int = 100):
 		# Play the dying sound
 		$DyingSound.play()
 		# Wait for the sound to finish before freeing the node
-		await($DyingSound, "finished")
+		await $DyingSound.finished
 		#drop_gem()
 		emit_signal("enemy_died", self)
 		queue_free()

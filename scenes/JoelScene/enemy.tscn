@@ -10,10 +10,6 @@
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_xlh5g")
-base_speed = null
-gravity = null
-knockback_strength = null
-knockback_duration = null
 gem_scene = ExtResource("2_d57gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
