@@ -1,22 +1,22 @@
 extends CharacterBody3D
 
-@export var speed: float = 20.0
+@export var base_speed: float = 20.0
 @export var gravity: float = 20.0
 @export var knockback_strength: float = 30.0
 @export var knockback_duration: float = 0.5  # Knockback duration in seconds
 @export var target: CharacterBody3D
 @export var gem_scene: PackedScene
 
-
 var knockback_timer: float = 0.0
 var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
 var health: int = 0  # Health will be set based on the scale value 
+var speed: float = base_speed  # Speed will be adjusted based on target's scale_
 
 signal enemy_died
 
 func _ready():
-	# Set health based on the scale of the enemy
+	# Set enemy's health based on its scale 
 	health = int(transform.basis.get_scale().length())
 
 func _physics_process(_delta):
@@ -34,6 +34,8 @@ func apply_gravity(_delta):
 
 func move_towards_target(_delta):
 	if target and not in_knockback:
+		if "scale_" in target:
+			speed = base_speed * target.scale_
 		var direction = calculate_direction_to_target(target)
 		update_velocity(direction)
 
