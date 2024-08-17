@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbbbli60c0rfc"]
+[gd_scene load_steps=6 format=3 uid="uid://dbbbli60c0rfc"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xlh5g"]
 [ext_resource type="PackedScene" uid="uid://w4y4qmu2v8b7" path="res://scenes/gem.tscn" id="2_d57gm"]
+[ext_resource type="AudioStream" uid="uid://cv4jeayoyec7t" path="res://Sounds/SlimeDeath.wav" id="3_sqojo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13kn6"]
 
@@ -9,6 +10,10 @@
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_xlh5g")
+base_speed = null
+gravity = null
+knockback_strength = null
+knockback_duration = null
 gem_scene = ExtResource("2_d57gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -18,3 +23,6 @@ shape = SubResource("CapsuleShape3D_13kn6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0601243, 0.427364, 0)
 mesh = SubResource("CapsuleMesh_r7qyp")
+
+[node name="DyingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_sqojo")

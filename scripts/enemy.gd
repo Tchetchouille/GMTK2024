@@ -82,6 +82,10 @@ func apply_knockback(normal: Vector3):
 func take_damage(damage: int = 100):
 	health -= damage
 	if health <= 0:
+		# Play the dying sound
+		$DyingSound.play()
+		# Wait for the sound to finish before freeing the node
+		await($DyingSound, "finished")
 		#drop_gem()
 		emit_signal("enemy_died", self)
 		queue_free()

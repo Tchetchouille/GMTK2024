@@ -57,10 +57,10 @@ transform = Transform3D(1, 0, 0, 0, 0.890943, 0.454115, 0, -0.454115, 0.890943, 
 [node name="CARA_Model" parent="." instance=ExtResource("2_a520b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="WalkingSound" type="AudioStreamPlayer" parent="."]
+[node name="WalkingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_f5gh5")
 
-[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_772xv")
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
