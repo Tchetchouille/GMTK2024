@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bamqbdjk5ka5y"]
+[gd_scene load_steps=8 format=3 uid="uid://bamqbdjk5ka5y"]
 
 [ext_resource type="Theme" uid="uid://dm3fofnyu8ox1" path="res://resources/Themes/main_menu.tres" id="1_gc4hb"]
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_gw4m3"]
 [ext_resource type="PackedScene" uid="uid://ofgmtbsn8vv3" path="res://scenes/UI/Buttons/settings_button.tscn" id="2_ofhes"]
 [ext_resource type="Shader" path="res://resources/Shaders/main_menu.gdshader" id="3_7k53c"]
 [ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="3_eyqqu"]
-[ext_resource type="Script" path="res://scripts/UI/background.gd" id="3_n6yyi"]
 [ext_resource type="PackedScene" uid="uid://b82obejhvti3m" path="res://scenes/UI/Buttons/credits_button.tscn" id="4_8hv2g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmwon"]
@@ -33,7 +32,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_n6yyi")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

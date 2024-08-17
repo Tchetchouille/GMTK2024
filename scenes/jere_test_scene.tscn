@@ -10,7 +10,6 @@
 [node name="MainMenu" parent="." instance=ExtResource("1_376a7")]
 
 [node name="GeneralUI" parent="." instance=ExtResource("2_0phh2")]
-visible = false
 
 [node name="MerdierDeTest" type="Node3D" parent="."]
 
