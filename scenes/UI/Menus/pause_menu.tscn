@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c28e2dvfnsntu"]
+[gd_scene load_steps=7 format=3 uid="uid://c28e2dvfnsntu"]
 
+[ext_resource type="Theme" uid="uid://bumu0uo8y0cm6" path="res://resources/Themes/pause_menu.tres" id="1_ha31u"]
 [ext_resource type="PackedScene" uid="uid://ofgmtbsn8vv3" path="res://scenes/UI/Buttons/settings_button.tscn" id="1_j1e4u"]
-[ext_resource type="Script" path="res://scenes/UI/Menus/pause_menu.gd" id="1_vlb6b"]
+[ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="1_vlb6b"]
 [ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="2_fxhfq"]
+[ext_resource type="Shader" uid="uid://2r75lq3n1wml" path="res://resources/Shaders/pause_menu.tres" id="3_8qlga"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b7adc"]
+shader = ExtResource("3_8qlga")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -12,12 +17,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ha31u")
 script = ExtResource("1_vlb6b")
 
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_b7adc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.381703, 0.381703, 0.381703, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -86.5
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
