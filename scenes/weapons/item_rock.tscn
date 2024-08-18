@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6k2o6ddlms2c"]
+
+[ext_resource type="PackedScene" uid="uid://boab3l13qa8sl" path="res://models/PROP_Rock.fbx" id="1_52my6"]
+
+[node name="PropRock" instance=ExtResource("1_52my6")]
+
+[node name="Rock_4" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+visible = false
+
+[node name="Rock_1" parent="." index="1"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+
+[node name="Rock_2" parent="." index="2"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+visible = false
+
+[node name="Rock_3" parent="." index="3"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+visible = false
+
+[node name="Rock_5" parent="." index="4"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+visible = false

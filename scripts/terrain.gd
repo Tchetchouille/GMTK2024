@@ -13,6 +13,7 @@ var weapons: Array[WeaponResource] = [
 	preload("res://resources/weapons/church.tres"),
 	#preload("res://resources/bone.tres"),
 	preload("res://resources/weapons/sword.tres"),
+	preload("res://resources/weapons/rock.tres"),
 	#preload("res://resources/weapons/chair.tres"),
 	preload("res://resources/weapons/needle.tres"),
 ]
@@ -49,7 +50,7 @@ func _ready() -> void:
 			if is_overlapped:
 				continue
 
-			#print("Add weapon" + weapon_resource.name)
+			print("Add weapon" + weapon_resource.name)
 			add_weapon(weapon_resource, Vector3(x, 0, y))
 			
 			taken_spaces.append(new_space)
