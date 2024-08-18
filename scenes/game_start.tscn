@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://baohwh2gcg8kf"]
+[gd_scene load_steps=6 format=3 uid="uid://dxyc1dhdv3d66"]
 
 [ext_resource type="PackedScene" uid="uid://bamqbdjk5ka5y" path="res://scenes/UI/Menus/main_menu.tscn" id="1_nnrej"]
 [ext_resource type="PackedScene" uid="uid://bxcrjhm2d573d" path="res://models/PROP_Sword.fbx" id="2_an035"]
-[ext_resource type="PackedScene" uid="uid://cqa880oekbmqp" path="res://scenes/main_world_environment.tscn" id="2_dbv8h"]
+[ext_resource type="PackedScene" path="res://scenes/main_world_environment.tscn" id="2_dbv8h"]
 [ext_resource type="Material" uid="uid://v03tx500vhat" path="res://resources/Textures/floor_texture.tres" id="2_qxo1f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rxl8c"]
