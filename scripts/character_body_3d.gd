@@ -12,6 +12,8 @@ extends CharacterBody3D
 @onready var mouse_sensitivity = 0.01 #get_var("look-sensitivity")
 @onready var camera = $CharacterCamera3D
 
+signal gem_picked_up
+
 var target_velocity = Vector3.ZERO
 var weapons_in_range = []
 var is_picking_up = false
@@ -94,6 +96,13 @@ func _physics_process(delta):
 	apply_knockback_effect(delta)
 	move_and_slide()
 	model.set_hand_item_scale(manager.current_scale * Vector3.ONE)
+	
+	var overlapping_areas = $PickupArea.get_overlapping_areas()
+	if overlapping_areas:
+		for area in overlapping_areas:
+			if area is Gem:
+				var gem = area as Gem
+				emit_signal("gem_picked_up", gem)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

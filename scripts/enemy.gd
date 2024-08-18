@@ -16,6 +16,7 @@ var dead: bool = false
 var original_scale: float = 0
 
 signal enemy_died
+signal gem_dropped
 
 
 func _physics_process(_delta):
@@ -92,11 +93,16 @@ func take_damage(damage: float):
 		$DyingSound.play()
 		# Wait for the sound to finish before freeing the node
 		await $DyingSound.finished
-		#drop_gem()
+		var gem = drop_gem()
+		emit_signal("gem_dropped", gem)
 		queue_free()
-		
-#func drop_gem():
-	#if gem_scene:
-		#var gem_instance = gem_scene.instantiate() as Area3D
-		#gem_instance.global_transform.origin = global_transform.origin  # Place the gem where the enemy is
-		#get_parent().add_child(gem_instance)  # Add the gem to the scene
+
+func drop_gem():
+		var gem_instance: Gem = gem_scene.instantiate() as Gem
+		var gempos = transform.origin
+		gempos.y = 0
+		gem_instance.transform.origin = transform.origin  # Place the gem where the enemy 
+		gem_instance.original_scale = original_scale
+		gem_instance.scale = scale
+		get_parent().add_child(gem_instance)  # Add the gem to the scene
+		return gem_instance

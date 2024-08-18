@@ -13,6 +13,7 @@ class_name GameManager extends Node
 var pause_menu = preload("res://scenes/UI/Menus/pause_menu.tscn")
 
 var enemies: Array = []
+var gems_on_terrain: Array = []
 var current_scale: float = 1.0 / start_scale
 var current_simulated_player_scale : float = start_scale
 
@@ -25,10 +26,11 @@ var scale_elapsed_time: float = 0.0
 
 
 func _ready():
+	target.connect("gem_picked_up", Callable(self, "_on_gem_picked_up"))
 	spawn_enemies()
-	
+
 	# initial scaling
-	scale_everything(current_scale, 0)
+	scale_everything(current_scale)
 
 	## Wave timer
 	var timer = Timer.new()
@@ -79,6 +81,9 @@ func _process(delta: float) -> void:
 		var old_hand_item_scale = target.model.get_hand_item_scale()
 		target.model.set_hand_item_scale(lerp_vector(old_hand_item_scale, new_scale, t))
 
+		for gem in gems_on_terrain:
+			var old_gem_scale = gem.scale
+			gem.scale = lerp_vector(old_gem_scale, gem.original_scale * new_scale, t)
 		# Stop scaling when done
 		if t >= 1.0:
 			is_scaling = false
@@ -106,6 +111,7 @@ func spawn_enemies():
 
 		# Connect the enemy's death signal
 		enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))
+		enemy_instance.connect("gem_dropped", Callable(self, "_on_gem_dropped"))
 
 		# Track the enemy instance
 		enemies.append(enemy_instance)
@@ -129,10 +135,22 @@ func get_random_position_near_target() -> Vector3:
 func _on_enemy_died(enemy_instance: CharacterBody3D):
 	enemies.erase(enemy_instance)
 	
+	if enemies.size() <= 1:
+		spawn_enemies()
+
+func _on_gem_dropped(gem: Gem):
+	gems_on_terrain.append(gem)
+
+func _on_gem_picked_up(gem: Gem):
+	gems_on_terrain.erase(gem)
+	var gem_scale = gem.original_scale
+	var increment = gem.pick_up()
+	
 	# Increment the player scale
 	# This is probably bad.
-	current_simulated_player_scale += scale_increment * enemy_instance.original_scale * 10
-	
+	var scale_value = scale_increment * gem_scale * 10
+	current_simulated_player_scale += scale_value
+
 	if current_simulated_player_scale >= 12:
 		print("WIN !")
 		current_simulated_player_scale = 12
@@ -141,12 +159,9 @@ func _on_enemy_died(enemy_instance: CharacterBody3D):
 	print("current_scale: ", current_scale, "; csps: ", current_simulated_player_scale)
 	
 	# Scale everything (terrain, enemies, player's weapon) based on the new scale
-	scale_everything(current_scale, scale_increment)
-	
-	if enemies.size() <= 1:
-		spawn_enemies()
+	scale_everything(current_scale)
 
-func scale_everything(target_scale_value: float, scale_increment: float):
+func scale_everything(target_scale_value: float):
 	# Set up the scaling operation
 	scale_start = terrain.scale
 	scale_target = target_scale_value * Vector3.ONE
