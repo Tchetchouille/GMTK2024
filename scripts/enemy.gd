@@ -13,6 +13,7 @@ var in_knockback: bool = false  # Track if the character is currently being knoc
 var health: float = 0  # Health will be set based on the scale value 
 var speed: float = base_speed  # Speed will be adjusted based on target's scale_
 var dead: bool = false
+var original_scale: float = 0
 
 signal enemy_died
 

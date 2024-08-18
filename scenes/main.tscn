@@ -25,5 +25,5 @@ spawn_radius = 20.0
 number_of_enemies = 10
 target = NodePath("../Character")
 terrain = NodePath("../Terrain")
-scale_variation = 0.1
+scale_variation = 0.3
 scale_increment = 0.02

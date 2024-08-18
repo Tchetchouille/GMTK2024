@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var manager: GameManager
 
 @onready var mouse_sensitivity = 0.01 #get_var("look-sensitivity")
+@onready var camera = $CharacterCamera3D
 
 var target_velocity = Vector3.ZERO
 var weapons_in_range = []
@@ -37,8 +38,10 @@ func _physics_process(delta):
 	if is_picking_up:
 		if Input.is_action_just_pressed("click_action") :
 			pickup_progress += pickup_increment
+			camera.trauma += 0.08
 			print(pickup_progress)
 			if pickup_progress > 100:
+				camera.trauma += 0.2
 				current_weapon_resource = picking_up_weapon.pick_up()
 				pickup_progress = 0
 				picking_up_weapon = null
@@ -130,7 +133,10 @@ func pickup_weapon() :
 	var closest_weapon = null
 	var biggest_weapon = null
 	var eligible_weapons = 0
-	for weapon in weapons_in_range:
+	for body in $PickupArea.get_overlapping_bodies():
+		if body.get_parent().get_parent() is not Weapon: continue
+		var weapon = body.get_parent().get_parent() as Weapon
+		
 		#if weapon.resource.scale > manager.current_scale * 2 or weapon.resource.scale < manager.current_scale * 0.5:
 			#continue
 		var weapon_scale = weapon.resource.scale
@@ -156,6 +162,7 @@ func pickup_weapon() :
 			picking_up_weapon = closest_weapon
 			is_picking_up = true
 			pickup_progress = pickup_increment
+			camera.trauma += 0.09
 
 func attack() :
 	if not current_weapon_resource: return
@@ -167,5 +174,6 @@ func attack() :
 	#print("Attack!")
 	for enemy in enemies :
 		if enemy.has_method("take_damage") :
+			$CharacterCamera3D.trauma += 0.05
 			enemy.take_damage(current_weapon_resource.damage)
 			#print("Ouch")

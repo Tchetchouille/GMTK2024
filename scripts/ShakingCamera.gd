@@ -23,6 +23,6 @@ func _process(float) -> void:
 
 		self.transform.origin = initial_transform.origin + offset
 
-	if Input.is_action_just_pressed("click_action") and (trauma + intensity) < max_trauma:
-			trauma += intensity
-			print(trauma)
+	#if Input.is_action_just_pressed("click_action") and (trauma + intensity) < max_trauma:
+			#trauma += intensity
+			#print(trauma)

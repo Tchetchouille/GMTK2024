@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ywenk7jinwf5"]
+[gd_scene load_steps=12 format=3 uid="uid://ywenk7jinwf5"]
 
 [ext_resource type="PackedScene" uid="uid://40dq7u1tbr73" path="res://scenes/weapons/cara_model.tscn" id="2_a520b"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
+[ext_resource type="Script" path="res://scripts/ShakingCamera.gd" id="3_cwy2y"]
 [ext_resource type="AudioStream" uid="uid://bq661ax7egquv" path="res://Sounds/walking.wav" id="4_f5gh5"]
 [ext_resource type="AudioStream" uid="uid://la7gk6s2eac7" path="res://Sounds/SwordHit.wav" id="5_772xv"]
 
@@ -38,10 +39,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_7ce67")
 
-[node name="CollisionArea" type="Area3D" parent="."]
+[node name="PickupArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_dtfg1")
 
@@ -54,6 +55,7 @@ shape = SubResource("BoxShape3D_qrq71")
 
 [node name="CharacterCamera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.890943, 0.454115, 0, -0.454115, 0.890943, 0, 2.81123, 3.5982)
+script = ExtResource("3_cwy2y")
 
 [node name="CARA_Model" parent="." instance=ExtResource("2_a520b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -64,5 +66,5 @@ stream = ExtResource("4_f5gh5")
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_772xv")
 
-[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
-[connection signal="body_exited" from="CollisionArea" to="." method="_on_collision_area_body_exited"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_collision_area_body_exited"]

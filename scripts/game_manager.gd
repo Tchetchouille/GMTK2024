@@ -57,7 +57,8 @@ func spawn_enemies():
 		# Scale the enemy relative to the player's current scale (make it around the player's size)
 		var relative_scale = randf_range(1.0 - scale_variation, 1.0)
 
-		enemy_instance.health = relative_scale * current_simulated_player_scale
+		enemy_instance.original_scale = relative_scale * current_simulated_player_scale
+		enemy_instance.health = enemy_instance.original_scale
 		enemy_instance.scale = Vector3.ONE * relative_scale
 
 		# Set the target for the enemy
@@ -90,7 +91,7 @@ func _on_enemy_died(enemy_instance: CharacterBody3D):
 	
 	# Increment the player scale
 	# This is probably bad.
-	current_simulated_player_scale += scale_increment
+	current_simulated_player_scale += scale_increment * enemy_instance.original_scale * 10
 	
 	if current_simulated_player_scale >= 12:
 		print("WIN !")
@@ -121,8 +122,8 @@ func scale_everything(scale_value, scale_increment):
 	## Scale enemies
 	for enemy in enemies:
 		# Adjust the enemy's scale based on the increment THIS DOESN'T WORK
-		var original_scale = enemy.scale / scale_vector
-		enemy.scale -= original_scale * scale_increment
+
+		enemy.scale = enemy.original_scale * scale_vector
 
 		if enemy.scale.x <= 0:
 			enemies.erase(enemy)
