@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cjidtpk62rvk6" path="res://models/CARA_Model.fbx" id="1_hqui3"]
 [ext_resource type="Script" path="res://scripts/character_model.gd" id="2_g6rrt"]
 [ext_resource type="Material" uid="uid://clane1b3w2sd4" path="res://Materials/Metal.tres" id="2_usc1s"]
-[ext_resource type="Material" path="res://Materials/Feather.tres" id="3_we7l5"]
+[ext_resource type="Material" uid="uid://385i5y4qs7ga" path="res://Materials/Feather.tres" id="3_we7l5"]
 [ext_resource type="Material" uid="uid://c1yv8dq83mmtk" path="res://Materials/DarkMetal.tres" id="4_jjw1a"]
 
 [node name="CARA_Model" node_paths=PackedStringArray("hand") instance=ExtResource("1_hqui3")]
