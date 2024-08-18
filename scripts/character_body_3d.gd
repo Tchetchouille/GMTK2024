@@ -71,7 +71,7 @@ func _physics_process(delta):
 		direction.x += 1
 	if Input.is_action_pressed("move_left") :
 		direction.x -= 1
-		
+
 	if Input.is_action_just_pressed("click_action") :
 		if weapons_in_range :
 			pickup_weapon()
