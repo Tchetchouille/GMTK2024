@@ -13,7 +13,7 @@ var weapons: Array[WeaponResource] = [
 	preload("res://resources/weapons/church.tres"),
 	#preload("res://resources/bone.tres"),
 	preload("res://resources/weapons/sword.tres"),
-	preload("res://resources/weapons/rock.tres"),
+	#preload("res://resources/weapons/rock.tres"),
 	#preload("res://resources/weapons/chair.tres"),
 	preload("res://resources/weapons/needle.tres"),
 ]

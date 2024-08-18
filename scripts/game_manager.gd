@@ -161,7 +161,7 @@ func _on_gem_picked_up(gem: Gem):
 		target.health = 100
 
 	if current_simulated_player_scale >= 12:
-		print("WIN !")
+		$"../GeneralUI/VictoryScreen".show()
 		current_simulated_player_scale = 12
 
 	current_scale = 1.0 / current_simulated_player_scale
