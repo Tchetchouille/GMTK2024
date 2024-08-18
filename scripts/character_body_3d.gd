@@ -184,13 +184,14 @@ func attack() :
 	#print("Attack!")
 	for enemy in enemies :
 		if enemy.has_method("take_damage") :
-			$CharacterCamera3D.trauma += 0.05
 			enemy.take_damage(current_weapon_resource.damage)
 			#print("Ouch")
 
 func take_damage(damage):
 	health -= damage
 	print(health)
+	camera.trauma += 0.1
+	
 	if health < 0:
 		print("DEATH")
 		# TODO: Game over

@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dc48wc4o4175t"
-valid=false
+uid="uid://bqlxwonf8goyl"
+path="res://.godot/imported/Rocks.fbx-564b9cfb6a3c34f00efd6765ae40a071.scn"
 
 [deps]
 
-source_file="res://models/PROP_Rock.fbx"
+source_file="res://models/Rocks.fbx"
+dest_files=["res://.godot/imported/Rocks.fbx-564b9cfb6a3c34f00efd6765ae40a071.scn"]
 
 [params]
 
@@ -31,6 +32,6 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=1
+fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1
