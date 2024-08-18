@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqa880oekbmqp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ulaid"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_elnul"]
+panorama = SubResource("CanvasTexture_ulaid")
+
+[sub_resource type="Sky" id="Sky_icps1"]
+sky_material = SubResource("PanoramaSkyMaterial_elnul")
+
+[sub_resource type="Environment" id="Environment_soui2"]
+background_mode = 1
+background_color = Color(0.356689, 0.581317, 0.703055, 1)
+sky = SubResource("Sky_icps1")
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_soui2")
