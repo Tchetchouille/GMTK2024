@@ -110,7 +110,7 @@ func _on_enemy_died(enemy_instance: CharacterBody3D):
 func scale_everything(scale_value, scale_increment):
 	var scale_vector = scale_value * Vector3.ONE
 	print("Scaling terrain to: ", scale_vector)
-	
+
 	## Scale world (terrain)
 	var player_pos = target.transform.origin
 	var to_player = terrain.transform.origin - player_pos
@@ -118,16 +118,15 @@ func scale_everything(scale_value, scale_increment):
 	terrain.scale = scale_vector
 	var scale_ratio = terrain.scale / old_scale
 	terrain.transform.origin = player_pos + to_player * scale_ratio
-	
+
 	## Scale enemies
 	for enemy in enemies:
-		# Adjust the enemy's scale based on the increment THIS DOESN'T WORK
-
+		# Scale the enemy based on its original scale and the current scale vector
 		enemy.scale = enemy.original_scale * scale_vector
-
-		if enemy.scale.x <= 0:
+		# Threshold for removing tiny enemies
+		if enemy.scale.x <= 0.01:
 			enemies.erase(enemy)
 			enemy.queue_free()
-	
+
 	## Scale the weapon in hand
 	target.model.set_hand_item_scale(scale_vector)

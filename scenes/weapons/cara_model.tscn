@@ -1,10 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://40dq7u1tbr73"]
+[gd_scene load_steps=8 format=3 uid="uid://40dq7u1tbr73"]
 
 [ext_resource type="PackedScene" uid="uid://cjidtpk62rvk6" path="res://models/CARA_Model.fbx" id="1_hqui3"]
 [ext_resource type="Script" path="res://scripts/character_model.gd" id="2_g6rrt"]
 [ext_resource type="Material" uid="uid://clane1b3w2sd4" path="res://Materials/Metal.tres" id="2_usc1s"]
-[ext_resource type="Material" uid="uid://385i5y4qs7ga" path="res://Materials/Feather.tres" id="3_we7l5"]
+[ext_resource type="Material" path="res://Materials/Feather.tres" id="3_we7l5"]
 [ext_resource type="Material" uid="uid://c1yv8dq83mmtk" path="res://Materials/DarkMetal.tres" id="4_jjw1a"]
+[ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="4_ykvnd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1816"]
+render_priority = 0
+shader = ExtResource("4_ykvnd")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/anisotropy_ratio = 0.0
+shader_parameter/anisotropy_direction = Vector3(0, -1, 0)
+shader_parameter/aniso_map_dir_ratio = 0.0
+shader_parameter/backlight = null
+shader_parameter/refraction = 0.05
+shader_parameter/blurriness = 0.0
+shader_parameter/alpha_cutoff = 0.5
+shader_parameter/color = Color(0.7, 0.12, 0.86, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="CARA_Model" node_paths=PackedStringArray("hand") instance=ExtResource("1_hqui3")]
 script = ExtResource("2_g6rrt")
@@ -12,79 +34,105 @@ hand = NodePath("locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR/Knight_Elbow
 
 [node name="Knight_Body1" parent="locator1" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_Head" parent="locator1/Knight_Body1" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_Feather2" parent="locator1/Knight_Body1/Knight_Head" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00446445, 0.132049, 0.00514047)
 material_override = ExtResource("3_we7l5")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_Feather1" parent="locator1/Knight_Body1/Knight_Head" index="1"]
 material_override = ExtResource("3_we7l5")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_Feather" parent="locator1/Knight_Body1/Knight_Head" index="2"]
 material_override = ExtResource("3_we7l5")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_Visor" parent="locator1/Knight_Body1/Knight_Head" index="3"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ShoulderL" parent="locator1/Knight_Body1" index="1"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ArmL" parent="locator1/Knight_Body1/Knight_ShoulderL" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ElbowL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_WristL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL/Knight_ElbowL" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_HandL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL/Knight_ElbowL/Knight_WristL" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ShoulderR" parent="locator1/Knight_Body1" index="2"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ArmR" parent="locator1/Knight_Body1/Knight_ShoulderR" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_ElbowR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_WristR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR/Knight_ElbowR" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_HandR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR/Knight_ElbowR/Knight_WristR" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_LegL" parent="locator1" index="1"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_UpLegL" parent="locator1/Knight_LegL" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_KneeL" parent="locator1/Knight_LegL/Knight_UpLegL" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_LowLegL" parent="locator1/Knight_LegL/Knight_UpLegL/Knight_KneeL" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_FootL" parent="locator1/Knight_LegL/Knight_UpLegL/Knight_KneeL/Knight_LowLegL" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_LegR" parent="locator1" index="2"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_UpLegR" parent="locator1/Knight_LegR" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_KneeR" parent="locator1/Knight_LegR/Knight_UpLegR" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_LowLegR" parent="locator1/Knight_LegR/Knight_UpLegR/Knight_KneeR" index="0"]
 material_override = ExtResource("2_usc1s")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
 
 [node name="Knight_FootR" parent="locator1/Knight_LegR/Knight_UpLegR/Knight_KneeR/Knight_LowLegR" index="0"]
 material_override = ExtResource("4_jjw1a")
+surface_material_override/0 = SubResource("ShaderMaterial_u1816")
