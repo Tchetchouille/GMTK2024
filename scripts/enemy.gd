@@ -28,6 +28,7 @@ func _physics_process(_delta):
 	apply_knockback_effect(_delta)
 	apply_movement()
 	handle_collision()
+	look_at(target.transform.origin)
 
 func apply_gravity(_delta):
 	if is_on_floor():

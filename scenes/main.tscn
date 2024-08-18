@@ -18,7 +18,8 @@ current_weapon_resource = ExtResource("3_1t6ca")
 manager = NodePath("../GameManager")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.454908, 0.890538, 0, -0.890538, -0.454908, 0, 1.51204, 0)
+transform = Transform3D(1, 0, 0, 0, -0.306925, 0.951734, 0, -0.951734, -0.306925, 0, 1.51204, 0)
+shadow_enabled = true
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("target", "terrain") instance=ExtResource("4_xji4p")]
 enemy_scene = ExtResource("3_7w8k5")
