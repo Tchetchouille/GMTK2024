@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var model: CharacterModel
 @export var manager: GameManager
 
-@onready var mouse_sensitivity = 0.01#get_var("look-sensitivity")
+@onready var mouse_sensitivity = 0.01 #get_var("look-sensitivity")
 
 var target_velocity = Vector3.ZERO
 var weapons_in_range = []
@@ -90,6 +90,7 @@ func _physics_process(delta):
 	
 	apply_knockback_effect(delta)
 	move_and_slide()
+	model.set_hand_item_scale(manager.current_scale * Vector3.ONE)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -113,31 +114,48 @@ func _on_collision_area_body_entered(body):
 	#print("Entered")
 	var weapon = body.get_parent().get_parent()
 	if weapon is Weapon :
-		print("Entered weapon")
+		#print("Entered weapon")
 		weapons_in_range.append(weapon)
 
 func _on_collision_area_body_exited(body):
 	#print("Exited")
 	var weapon = body.get_parent().get_parent()
 	if weapon is Weapon :
-		print("Exited weapon")
+		#print("Exited weapon")
 		weapons_in_range.erase(weapon)
 
 func pickup_weapon() :
 	var min_distance = INF
+	var min_scale = INF
 	var closest_weapon = null
+	var biggest_weapon = null
+	var eligible_weapons = 0
 	for weapon in weapons_in_range:
-		if weapon.resource.scale > manager.current_scale * 1.2 or weapon.resource.scale < manager.current_scale * 0.8:
-			continue
+		#if weapon.resource.scale > manager.current_scale * 2 or weapon.resource.scale < manager.current_scale * 0.5:
+			#continue
+		var weapon_scale = weapon.resource.scale
+		# don't pick up shit weapons
+		if weapon_scale <= current_weapon_resource.scale: continue
+
 		var distance = transform.origin.distance_to(weapon.transform.origin)
 		if distance < min_distance :
 			min_distance = distance
 			closest_weapon = weapon
+		if weapon_scale < min_scale:
+			min_scale = weapon_scale
+			biggest_weapon = weapon
+		eligible_weapons += 1
 	
-	if closest_weapon:
-		picking_up_weapon = closest_weapon
-		is_picking_up = true
-		pickup_progress = pickup_increment
+	if eligible_weapons > 0:
+		# TODO: Show weapon pickup prompt
+		pass
+	if eligible_weapons > 1:
+		picking_up_weapon = biggest_weapon
+	else:
+		if closest_weapon:
+			picking_up_weapon = closest_weapon
+			is_picking_up = true
+			pickup_progress = pickup_increment
 
 func attack() :
 	if not current_weapon_resource: return
@@ -146,8 +164,8 @@ func attack() :
 	$AttackSound.play()
 
 	var enemies = $AttackArea.get_overlapping_bodies()
-	print("Attack!")
+	#print("Attack!")
 	for enemy in enemies :
 		if enemy.has_method("take_damage") :
 			enemy.take_damage(current_weapon_resource.damage)
-			print("Ouch")
+			#print("Ouch")

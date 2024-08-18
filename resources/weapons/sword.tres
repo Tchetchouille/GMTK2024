@@ -11,5 +11,5 @@ scale = 0.7
 model = ExtResource("1_tu7ce")
 item_model = ExtResource("1_e1ls4")
 max_occurrences = 50
-radius = 1.0
+radius = 5.0
 damage = 1.0

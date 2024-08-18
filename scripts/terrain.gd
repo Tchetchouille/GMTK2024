@@ -63,6 +63,8 @@ func add_weapon(weapon_resource: WeaponResource, position: Vector3):
 	weapon.position.x = position.x
 	weapon.position.y = position.y
 	weapon.position.z = position.z
+	var rotation_amount = randf_range(0, 360)
+	weapon.transform.basis = weapon.transform.basis.rotated(Vector3.UP, rotation_amount)
 	weapon.resource = weapon_resource
 
 func is_overlap(a, b):

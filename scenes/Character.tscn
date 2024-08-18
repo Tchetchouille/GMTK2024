@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_uiur8")
 radius = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrq71"]
-size = Vector3(1.122, 1, 1)
+size = Vector3(2.09664, 1, 2.69949)
 
 [node name="character" type="CharacterBody3D" node_paths=PackedStringArray("model")]
 script = ExtResource("2_ro3ve")
@@ -49,7 +49,7 @@ shape = SubResource("CylinderShape3D_dtfg1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252583, -1.23938)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31575, 0.220425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0167826, 0.31575, -0.114552)
 shape = SubResource("BoxShape3D_qrq71")
 
 [node name="CharacterCamera3D" type="Camera3D" parent="."]

@@ -12,16 +12,16 @@ var knockback_velocity: Vector3 = Vector3.ZERO
 var in_knockback: bool = false  # Track if the character is currently being knocked back
 var health: float = 0  # Health will be set based on the scale value 
 var speed: float = base_speed  # Speed will be adjusted based on target's scale_
-var scale_: float = 1
+var dead: bool = false
 
 signal enemy_died
 
-func _ready():
-	# Set enemy's health based on its scale 
-	health = scale_
 
 func _physics_process(_delta):
 	apply_gravity(_delta)
+	
+	if dead: return
+
 	move_towards_target(_delta)
 	apply_knockback_effect(_delta)
 	apply_movement()
@@ -35,8 +35,8 @@ func apply_gravity(_delta):
 
 func move_towards_target(_delta):
 	if is_on_floor() and target and not in_knockback:
-		if "scale_" in target:
-			speed = base_speed * target.scale_
+		#if "scale_" in target:
+			#speed = base_speed * target.scale_
 		var direction = calculate_direction_to_target(target)
 		update_velocity(direction)
 
@@ -79,15 +79,19 @@ func apply_knockback(normal: Vector3):
 	knockback_timer = knockback_duration
 	in_knockback = true  # Set knockback state to true
 
-func take_damage(damage: int = 100):
+func take_damage(damage: float):
+	if dead: return
+	
 	health -= damage
 	if health <= 0:
+		emit_signal("enemy_died", self)
+		dead = true
+		
 		# Play the dying sound
 		$DyingSound.play()
 		# Wait for the sound to finish before freeing the node
 		await $DyingSound.finished
 		#drop_gem()
-		emit_signal("enemy_died", self)
 		queue_free()
 		
 #func drop_gem():
