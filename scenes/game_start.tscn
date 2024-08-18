@@ -1,26 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://baohwh2gcg8kf"]
+[gd_scene load_steps=6 format=3 uid="uid://baohwh2gcg8kf"]
 
 [ext_resource type="PackedScene" uid="uid://bamqbdjk5ka5y" path="res://scenes/UI/Menus/main_menu.tscn" id="1_nnrej"]
 [ext_resource type="PackedScene" uid="uid://bxcrjhm2d573d" path="res://models/PROP_Sword.fbx" id="2_an035"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ulaid"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_elnul"]
-panorama = SubResource("CanvasTexture_ulaid")
-
-[sub_resource type="Sky" id="Sky_icps1"]
-sky_material = SubResource("PanoramaSkyMaterial_elnul")
-
-[sub_resource type="Environment" id="Environment_soui2"]
-background_mode = 1
-background_color = Color(0.356689, 0.581317, 0.703055, 1)
-sky = SubResource("Sky_icps1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1b12"]
-albedo_color = Color(0.537255, 0.686275, 0.537255, 1)
+[ext_resource type="PackedScene" uid="uid://cqa880oekbmqp" path="res://scenes/main_world_environment.tscn" id="2_dbv8h"]
+[ext_resource type="Material" uid="uid://v03tx500vhat" path="res://resources/Textures/floor_texture.tres" id="2_qxo1f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rxl8c"]
-material = SubResource("StandardMaterial3D_c1b12")
+material = ExtResource("2_qxo1f")
 
 [node name="GameStart" type="Node"]
 
@@ -29,8 +15,7 @@ material = SubResource("StandardMaterial3D_c1b12")
 [node name="MerdierDeTest" type="Node3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MerdierDeTest"]
-environment = SubResource("Environment_soui2")
+[node name="WorldEnvironment" parent="MerdierDeTest" instance=ExtResource("2_dbv8h")]
 
 [node name="Camera3D" type="Camera3D" parent="MerdierDeTest"]
 transform = Transform3D(1, 0, 0, 0, 0.995026, 0.0996155, 0, -0.0996155, 0.995026, -0.183559, 0.180569, 0.286421)
