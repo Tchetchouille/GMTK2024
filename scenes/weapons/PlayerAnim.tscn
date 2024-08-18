@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0yyesy4kh2vc"]
+[gd_scene load_steps=10 format=3 uid="uid://d0yyesy4kh2vc"]
 
 [ext_resource type="PackedScene" uid="uid://di6gocbt5lrht" path="res://models/Player_Anim.fbx" id="1_mxbtm"]
+[ext_resource type="Script" path="res://scripts/character_model.gd" id="2_imok0"]
 [ext_resource type="Material" uid="uid://clane1b3w2sd4" path="res://Materials/Metal.tres" id="2_kia6d"]
-[ext_resource type="Material" uid="uid://385i5y4qs7ga" path="res://Materials/Feather.tres" id="3_t5bn2"]
+[ext_resource type="Material" path="res://Materials/Feather.tres" id="3_t5bn2"]
 [ext_resource type="Material" uid="uid://c1yv8dq83mmtk" path="res://Materials/DarkMetal.tres" id="4_8e4y3"]
 [ext_resource type="Animation" uid="uid://c3vrusupnxjvw" path="res://resources/Anim/HitAnim.res" id="5_f0pnn"]
 [ext_resource type="Animation" uid="uid://sqkt1o6wup8b" path="res://resources/Anim/RunAnim.res" id="6_fyc3f"]
@@ -18,37 +19,39 @@ _data = {
 "RunAnim": ExtResource("6_fyc3f")
 }
 
-[node name="Player_Anim" instance=ExtResource("1_mxbtm")]
+[node name="Player_Anim" node_paths=PackedStringArray("hand") instance=ExtResource("1_mxbtm")]
+script = ExtResource("2_imok0")
+hand = NodePath("locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR/Knight_ElbowR/Knight_WristR/Knight_HandR")
 
 [node name="locator1" parent="." index="0"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.00719722, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.0160438, 0)
 
 [node name="Knight_Body1" parent="locator1" index="0"]
-transform = Transform3D(0.928141, 0, 0.372229, 0, 1, 0, -0.372229, 0, 0.928141, 0.172959, 42.8941, 0)
+transform = Transform3D(1, 0, -2.94697e-09, 0, 1, 0, 2.94697e-09, 0, 1, 0.172959, 42.8941, 0)
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_Head" parent="locator1/Knight_Body1" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_Feather2" parent="locator1/Knight_Body1/Knight_Head" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.952086, 0.305831, 0, -0.305831, 0.952086, -0.64819, 26.4098, 0.673446)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 0.00475763, 0, -0.00475763, 0.999989, -0.64819, 26.4098, 0.673446)
 material_override = ExtResource("3_t5bn2")
 surface_material_override/0 = ExtResource("3_t5bn2")
 
 [node name="Knight_Feather1" parent="locator1/Knight_Body1/Knight_Head" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.952086, 0.305831, 0, -0.305831, 0.952086, -3.69895e-06, 26.9117, 2.62086e-06)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 0.00475763, 0, -0.00475763, 0.999989, -3.69895e-06, 26.9117, 2.62086e-06)
 surface_material_override/0 = ExtResource("3_t5bn2")
 
 [node name="Knight_Feather" parent="locator1/Knight_Body1/Knight_Head" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.952086, 0.305831, 0, -0.305831, 0.952086, -0.530809, 26.7259, -0.0251518)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 0.00475763, 0, -0.00475763, 0.999989, -0.530809, 26.7259, -0.0251518)
 surface_material_override/0 = ExtResource("3_t5bn2")
 
 [node name="Knight_Visor" parent="locator1/Knight_Body1/Knight_Head" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.998857, 0.0478002, 0, -0.0478002, 0.998857, 0, 12.801, 0)
+transform = Transform3D(1, 0, 0, 0, 0.908805, 0.417221, 0, -0.417221, 0.908805, 0, 12.801, 0)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ShoulderL" parent="locator1/Knight_Body1" index="1"]
-transform = Transform3D(0.142476, 0.989554, 0.0219853, -0.97798, 0.144162, -0.150911, -0.152504, 3.72529e-09, 0.988302, 16.9583, 22.6547, -0.577165)
+transform = Transform3D(0.0276253, 0.989554, 0.14149, -0.189626, 0.144162, -0.971215, -0.981469, -1.78814e-07, 0.191628, 16.9583, 22.6547, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ArmL" parent="locator1/Knight_Body1/Knight_ShoulderL" index="0"]
@@ -65,7 +68,7 @@ material_override = ExtResource("2_kia6d")
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ShoulderR" parent="locator1/Knight_Body1" index="2"]
-transform = Transform3D(0.230731, -0.97269, 0.0252518, 0.881082, 0.197848, -0.429594, 0.412866, 0.121369, 0.90267, -17.1392, 22.6547, -0.577165)
+transform = Transform3D(-0.0411594, -0.971388, 0.233904, 0.396628, 0.198982, 0.896155, -0.917056, 0.129658, 0.37709, -17.1392, 22.6547, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ArmR" parent="locator1/Knight_Body1/Knight_ShoulderR" index="0"]
@@ -82,39 +85,39 @@ material_override = ExtResource("2_kia6d")
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_LegL" parent="locator1" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.990787, -0.13542, 0, 0.13542, 0.990787, 7.08021, 40.0046, -0.577165)
+transform = Transform3D(1, 0, 0, 0, 0.905704, 0.423909, 0, -0.423909, 0.905704, 7.08021, 40.0046, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_UpLegL" parent="locator1/Knight_LegL" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_KneeL" parent="locator1/Knight_LegL/Knight_UpLegL" index="0"]
-transform = Transform3D(0.999997, -0.000441325, -0.00222557, -0.000516138, 0.910936, -0.412549, 0.00220942, 0.412549, 0.910933, 0.455323, -5.14907, 0.0107113)
+transform = Transform3D(0.999794, -5.83106e-05, -0.0202617, -0.000741671, 0.999221, -0.0394727, 0.0202482, 0.0394796, 0.999015, 0.455323, -5.14907, 0.0107113)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_LowLegL" parent="locator1/Knight_LegL/Knight_UpLegL/Knight_KneeL" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_FootL" parent="locator1/Knight_LegL/Knight_UpLegL/Knight_KneeL/Knight_LowLegL" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.954548, 0.298059, 0, -0.298059, 0.954548, 0.0658601, -5.22435, -0.145895)
+transform = Transform3D(1, 0, 0, 0, 0.973995, 0.226571, 0, -0.226571, 0.973995, 0.0658601, -5.22435, -0.145895)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_LegR" parent="locator1" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.891168, 0.453674, 0, -0.453674, 0.891168, -6.73429, 40.0046, -0.577165)
+transform = Transform3D(1, 0, 0, 0, 0.992943, 0.118594, 0, -0.118594, 0.992943, -6.73429, 40.0046, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_UpLegR" parent="locator1/Knight_LegR" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_KneeR" parent="locator1/Knight_LegR/Knight_UpLegR" index="0"]
-transform = Transform3D(1, 0, 0, 0, -0.18338, -0.983042, 0, 0.983042, -0.18338, -0.455323, -5.14907, 0.0107113)
+transform = Transform3D(1, 0, 0, 0, 0.205317, -0.978695, 0, 0.978695, 0.205317, -0.455323, -5.14907, 0.0107113)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_LowLegR" parent="locator1/Knight_LegR/Knight_UpLegR/Knight_KneeR" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_FootR" parent="locator1/Knight_LegR/Knight_UpLegR/Knight_KneeR/Knight_LowLegR" index="0"]
-transform = Transform3D(1, -1.32382e-05, 2.76206e-05, 6.50152e-06, 0.972967, 0.230944, -2.99313e-05, -0.230944, 0.972967, -0.0658601, -5.22435, -0.145895)
+transform = Transform3D(1, 3.30458e-06, 0.000263686, 0.000164453, 0.773852, -0.633366, -0.000206147, 0.633366, 0.773852, -0.0658601, -5.22435, -0.145895)
 material_override = ExtResource("4_8e4y3")
 
 [node name="AnimationPlayer" parent="." index="1"]
@@ -122,5 +125,6 @@ libraries = {
 "": SubResource("AnimationLibrary_10oq4"),
 "Character": SubResource("AnimationLibrary_1inln")
 }
+autoplay = "Character/RunAnim"
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]

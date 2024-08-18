@@ -3,7 +3,11 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<< HEAD
 uid="uid://boab3l13qa8sl"
+=======
+uid="uid://sug5rx42ppgp"
+>>>>>>> 07b57903ab8f21dc889e3a53243eb243c6d8b203
 path="res://.godot/imported/PROP_Rock.fbx-b12750ec213a090f96552c937585469b.scn"
 
 [deps]

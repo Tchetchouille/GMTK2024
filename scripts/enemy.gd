@@ -28,6 +28,7 @@ func _physics_process(_delta):
 	apply_knockback_effect(_delta)
 	apply_movement()
 	handle_collision()
+	look_at(target.transform.origin)
 
 func apply_gravity(_delta):
 	if is_on_floor():
@@ -73,7 +74,7 @@ func handle_collision():
 				target.apply_knockback(-collision_normal)
 			# Apply damage if method exists in target
 			if target.has_method('take_damage'):
-				target.take_damage()
+				target.take_damage(original_scale)
 
 func apply_knockback(normal: Vector3):
 	# Apply knockback

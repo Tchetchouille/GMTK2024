@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://ywenk7jinwf5"]
 
-[ext_resource type="PackedScene" uid="uid://40dq7u1tbr73" path="res://scenes/weapons/cara_model.tscn" id="2_a520b"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
 [ext_resource type="Script" path="res://scripts/ShakingCamera.gd" id="3_cwy2y"]
 [ext_resource type="AudioStream" uid="uid://bq661ax7egquv" path="res://Sounds/walking.wav" id="4_f5gh5"]
 [ext_resource type="AudioStream" uid="uid://la7gk6s2eac7" path="res://Sounds/SwordHit.wav" id="5_772xv"]
+[ext_resource type="PackedScene" uid="uid://d0yyesy4kh2vc" path="res://scenes/weapons/PlayerAnim.tscn" id="6_fglft"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewddu"]
 
@@ -22,7 +22,7 @@ size = Vector3(2.09664, 1, 2.69949)
 
 [node name="character" type="CharacterBody3D" node_paths=PackedStringArray("model")]
 script = ExtResource("2_ro3ve")
-model = NodePath("CARA_Model")
+model = NodePath("Player_Anim")
 
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)
@@ -57,14 +57,14 @@ shape = SubResource("BoxShape3D_qrq71")
 transform = Transform3D(1, 0, 0, 0, 0.890943, 0.454115, 0, -0.454115, 0.890943, 0, 2.81123, 3.5982)
 script = ExtResource("3_cwy2y")
 
-[node name="CARA_Model" parent="." instance=ExtResource("2_a520b")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
 [node name="WalkingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_f5gh5")
 
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_772xv")
+
+[node name="Player_Anim" parent="." instance=ExtResource("6_fglft")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="body_exited" from="PickupArea" to="." method="_on_collision_area_body_exited"]

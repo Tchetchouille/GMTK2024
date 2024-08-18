@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://c7uhqmccyd1oo"
+=======
+uid="uid://cneukwh71ikof"
+>>>>>>> 07b57903ab8f21dc889e3a53243eb243c6d8b203
 path.s3tc="res://.godot/imported/PROP_Rock_0.png-7689a566bb636728cf05f90453d6bee9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbbbli60c0rfc"]
+[gd_scene load_steps=7 format=3 uid="uid://dbbbli60c0rfc"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xlh5g"]
-[ext_resource type="PackedScene" uid="uid://w4y4qmu2v8b7" path="res://scenes/gem.tscn" id="2_d57gm"]
+[ext_resource type="PackedScene" uid="uid://bawoqjvmagqtb" path="res://scenes/gem.tscn" id="2_d57gm"]
 [ext_resource type="AudioStream" uid="uid://cv4jeayoyec7t" path="res://Sounds/SlimeDeath.wav" id="3_sqojo"]
+[ext_resource type="PackedScene" uid="uid://bea7yirff1nmc" path="res://scenes/slime_walk.tscn" id="4_6l87x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13kn6"]
 
@@ -13,12 +14,16 @@ script = ExtResource("1_xlh5g")
 gem_scene = ExtResource("2_d57gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430977, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_13kn6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0601243, 0.427364, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_r7qyp")
 
 [node name="DyingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_sqojo")
+
+[node name="SlimeWalk" parent="." instance=ExtResource("4_6l87x")]
+transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0, 0, 0)

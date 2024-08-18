@@ -84,6 +84,10 @@ func _process(delta: float) -> void:
 		for gem in gems_on_terrain:
 			var old_gem_scale = gem.scale
 			gem.scale = lerp_vector(old_gem_scale, gem.original_scale * new_scale, t)
+			
+			if gem.scale.x <= 0.01:
+				gems_on_terrain.erase(gem)
+				gem.queue_free()
 		# Stop scaling when done
 		if t >= 1.0:
 			is_scaling = false
@@ -150,6 +154,11 @@ func _on_gem_picked_up(gem: Gem):
 	# This is probably bad.
 	var scale_value = scale_increment * gem_scale * 10
 	current_simulated_player_scale += scale_value
+	
+	target.health += gem_scale
+	
+	if target.health > 100:
+		target.health = 100
 
 	if current_simulated_player_scale >= 12:
 		print("WIN !")
