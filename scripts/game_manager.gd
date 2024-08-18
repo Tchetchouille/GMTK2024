@@ -1,4 +1,4 @@
-extends Node
+class_name GameManager extends Node
 
 @export var enemy_scene: PackedScene  # The scene resource of the enemy
 @export var spawn_radius: float = 80.0  # Radius around the target where enemies will spawn
@@ -81,7 +81,7 @@ func _on_enemy_died(enemy_instance: CharacterBody3D):
 		spawn_enemies()
 
 
-func scale_everything(amount: float):
+func scale_everything(amount):
 	## Scale world
 	# Get the player's position
 	var player_pos = target.transform.origin
@@ -92,8 +92,9 @@ func scale_everything(amount: float):
 	# Store the old scale
 	var old_scale = terrain.scale
 	
+	current_scale += amount
 	# Scale down the terrain
-	terrain.scale -= Vector3.ONE * amount
+	terrain.scale -= amount * Vector3.ONE
 
 	# Calculate the scale ratio (to adjust the terrain position)
 	var scale_ratio = terrain.scale / old_scale
@@ -103,4 +104,6 @@ func scale_everything(amount: float):
 	
 	
 	for enemy in enemies:
-		enemy.scale -= Vector3.ONE * amount
+		enemy.scale -= amount * Vector3.ONE
+	
+	target.model.set_hand_item_scale(terrain.scale)

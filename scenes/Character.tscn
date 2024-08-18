@@ -19,8 +19,9 @@ radius = 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrq71"]
 size = Vector3(1.122, 1, 1)
 
-[node name="character" type="CharacterBody3D"]
+[node name="character" type="CharacterBody3D" node_paths=PackedStringArray("model")]
 script = ExtResource("2_ro3ve")
+model = NodePath("CARA_Model")
 
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.527727, 0.849414, 0, -0.849414, 0.527727, 0, 12.7203, 6.74242)

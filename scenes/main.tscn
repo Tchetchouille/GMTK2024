@@ -11,9 +11,10 @@
 [node name="Terrain" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_nfvie")]
 player = NodePath("../Character")
 
-[node name="Character" parent="." instance=ExtResource("2_ge8hq")]
+[node name="Character" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("2_ge8hq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 current_weapon_resource = ExtResource("3_1t6ca")
+manager = NodePath("../GameManager")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.306925, 0.951734, 0, -0.951734, -0.306925, 0, 1.51204, 0)

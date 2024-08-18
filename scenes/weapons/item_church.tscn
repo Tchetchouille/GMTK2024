@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1xwmrsvgpmsf"]
+
+[ext_resource type="PackedScene" uid="uid://cxq1r0gt4mkti" path="res://models/ITEM_Church.fbx" id="1_c8ttv"]
+
+[node name="ITEM_Church" instance=ExtResource("1_c8ttv")]

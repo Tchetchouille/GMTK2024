@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm1v85y1tvssn"]
+
+[ext_resource type="PackedScene" uid="uid://cvmvl6caqy3bd" path="res://models/ITEM_Sword.fbx" id="1_rcmgh"]
+
+[node name="ITEM_Sword" instance=ExtResource("1_rcmgh")]

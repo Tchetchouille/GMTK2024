@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://bwg41iohtrfi3"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=4 format=3 uid="uid://bwg41iohtrfi3"]
 
 [ext_resource type="PackedScene" uid="uid://bvnjotreh65bq" path="res://scenes/weapons/prop_church.tscn" id="1_dbnc8"]
+[ext_resource type="PackedScene" uid="uid://b1xwmrsvgpmsf" path="res://scenes/weapons/item_church.tscn" id="1_w3oby"]
 [ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="2_r5orx"]
 
 [resource]
@@ -8,6 +9,7 @@ script = ExtResource("2_r5orx")
 name = "Church"
 scale = 60.0
 model = ExtResource("1_dbnc8")
+item_model = ExtResource("1_w3oby")
 max_occurrences = 4
 radius = 15.0
 damage = 60.0

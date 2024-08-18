@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://c8og61sa7x30a"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=4 format=3 uid="uid://c8og61sa7x30a"]
 
+[ext_resource type="PackedScene" uid="uid://cm1v85y1tvssn" path="res://scenes/weapons/item_sword.tscn" id="1_e1ls4"]
 [ext_resource type="PackedScene" uid="uid://b0f4pds0wpp2a" path="res://scenes/weapons/prop_sword.tscn" id="1_tu7ce"]
 [ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="2_hedo3"]
 
@@ -8,6 +9,7 @@ script = ExtResource("2_hedo3")
 name = "Sword"
 scale = 0.7
 model = ExtResource("1_tu7ce")
+item_model = ExtResource("1_e1ls4")
 max_occurrences = 50
 radius = 1.0
 damage = 1.0

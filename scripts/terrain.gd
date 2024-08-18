@@ -5,7 +5,7 @@ class_name Terrain
 @export var map_size = 100
 @export var player: CharacterBody3D
 var weapon_template = preload("res://scenes/weapon.tscn")
-var noise: FastNoiseLite
+#@onready var noise: FastNoiseLite = FastNoiseLite.new()
 var taken_spaces = Array()
 
 var weapons: Array[WeaponResource] = [
@@ -13,13 +13,12 @@ var weapons: Array[WeaponResource] = [
 	preload("res://resources/weapons/church.tres"),
 	#preload("res://resources/bone.tres"),
 	preload("res://resources/weapons/sword.tres"),
-	preload("res://resources/weapons/chair.tres"),
+	#preload("res://resources/weapons/chair.tres"),
 	preload("res://resources/weapons/needle.tres"),
 ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#noise = FastNoiseLite.new()
 	#noise.seed = randi()
 	
 	# Prevent stuff from spawning at the center (on the player)

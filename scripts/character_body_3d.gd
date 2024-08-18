@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var knockback_strength: float = 100.0
 @export var knockback_duration: float = 0.5
 @export var pickup_increment: float = 10
+@export var model: CharacterModel
+@export var manager: GameManager
 
 @onready var mouse_sensitivity = 0.01#get_var("look-sensitivity")
 
@@ -21,6 +23,9 @@ var in_knockback: bool = false  # Track if the character is currently being knoc
 # https://kidscancode.org/godot_recipes/4.x/input/mouse_capture/
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	model.set_hand_item(current_weapon_resource.item_model)
+	model.set_hand_item_scale(manager.current_scale * Vector3.ONE)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -39,6 +44,8 @@ func _physics_process(delta):
 				picking_up_weapon = null
 				is_picking_up = false
 				print("Weapon picked up!")
+				model.set_hand_item(current_weapon_resource.item_model)
+				model.set_hand_item_scale(manager.current_scale * Vector3.ONE)
 		else:
 			# loose progress if not clicking
 			pickup_progress -= inactivity_pickup_loss * delta
@@ -120,6 +127,8 @@ func pickup_weapon() :
 	var min_distance = INF
 	var closest_weapon = null
 	for weapon in weapons_in_range:
+		if weapon.resource.scale > manager.current_scale * 1.2 or weapon.resource.scale < manager.current_scale * 0.8:
+			continue
 		var distance = transform.origin.distance_to(weapon.transform.origin)
 		if distance < min_distance :
 			min_distance = distance
