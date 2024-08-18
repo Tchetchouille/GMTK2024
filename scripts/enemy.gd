@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Enemy extends CharacterBody3D
 
 @export var base_speed: float = 5.0
 @export var gravity: float = 20.0
@@ -74,11 +74,7 @@ func handle_collision():
 				target.apply_knockback(-collision_normal)
 			# Apply damage if method exists in target
 			if target.has_method('take_damage'):
-<<<<<<< HEAD
-				target.take_damage(2 + 2 * original_scale)
-=======
 				target.take_damage(sqrt(original_scale))
->>>>>>> e1d07842fc83813a5e6d4968b824b0a48130bc47
 
 func apply_knockback(normal: Vector3):
 	# Apply knockback

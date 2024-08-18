@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dth5dyuvfj4gl"]
+[gd_scene load_steps=3 format=3 uid="uid://dth5dyuvfj4gl"]
 
 [ext_resource type="Script" path="res://scripts/UI/general_ui.gd" id="1_vgxit"]
+[ext_resource type="PackedScene" uid="uid://ba24ru1psi5s4" path="res://scenes/UI/Buttons/quit_button.tscn" id="2_di3ni"]
 
 [node name="GeneralUI" type="Control"]
 layout_mode = 3
@@ -57,6 +58,10 @@ text = "It seems you are quite dead..."
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="QuitButton" parent="DefeatScreen/VBoxContainer" instance=ExtResource("2_di3ni")]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
 [node name="VictoryScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -106,3 +111,7 @@ text = "You triumphed over the slimes!
 With nothing in your way, you'll soon become large enough to pick up the whole planet."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="QuitButton" parent="VictoryScreen/VBoxContainer" instance=ExtResource("2_di3ni")]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2

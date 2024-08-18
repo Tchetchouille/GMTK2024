@@ -183,15 +183,15 @@ func attack() :
 	var enemies = $AttackArea.get_overlapping_bodies()
 	#print("Attack!")
 	for enemy in enemies :
+		if enemy is not Enemy: continue
 		if enemy.has_method("take_damage") :
 			enemy.take_damage(current_weapon_resource.damage)
 			#print("Ouch")
 
 func take_damage(damage):
-	print(health)
 	health -= damage
 	camera.trauma += 0.1
 	if health < 0:
 		$"../GeneralUI/DefeatScreen".show()
-		print($"../GeneralUI/DefeatScreen".name)
+		Engine.time_scale = 0.01
 		pass

@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	pass
 	$DefeatScreen.hide()
 	$VictoryScreen.hide()
 

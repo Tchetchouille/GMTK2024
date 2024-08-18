@@ -162,6 +162,7 @@ func _on_gem_picked_up(gem: Gem):
 
 	if current_simulated_player_scale >= 12:
 		$"../GeneralUI/VictoryScreen".show()
+		Engine.time_scale = 0.01
 		current_simulated_player_scale = 12
 
 	current_scale = 1.0 / current_simulated_player_scale

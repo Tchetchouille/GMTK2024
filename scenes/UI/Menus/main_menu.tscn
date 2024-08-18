@@ -49,7 +49,7 @@ theme_override_constants/margin_top = 50
 [node name="Label" type="Label" parent="TitleMargin"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
-text = "GAME TITLE"
+text = "KILL TO SCALE"
 
 [node name="MenuMargin" type="MarginContainer" parent="."]
 layout_mode = 1
