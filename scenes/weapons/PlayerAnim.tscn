@@ -11,7 +11,7 @@
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.0137753, 0)
 
 [node name="Knight_Body1" parent="locator1" index="0"]
-transform = Transform3D(1, 0, -2.94697e-09, 0, 1, 0, 2.94697e-09, 0, 1, 0.172959, 42.8941, 0)
+transform = Transform3D(0.957449, 0, 0.288602, 0, 1, 0, -0.288602, 0, 0.957449, 0.172959, 42.8941, 0)
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_Head" parent="locator1/Knight_Body1" index="0"]
@@ -35,14 +35,14 @@ transform = Transform3D(1, 0, 0, 0, 0.999478, 0.0323153, 0, -0.0323153, 0.999478
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ShoulderL" parent="locator1/Knight_Body1" index="1"]
-transform = Transform3D(0.171769, 0.985137, -1.72939e-09, -0.985137, 0.171769, 9.91848e-09, 1.00681e-08, 1.11022e-16, 1, 16.9583, 22.6547, -0.577165)
+transform = Transform3D(0.0927762, 0.985137, 0.144558, -0.532095, 0.171769, -0.829078, -0.841587, -2.98023e-08, 0.540122, 16.9583, 22.6547, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ArmL" parent="locator1/Knight_Body1/Knight_ShoulderL" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_ElbowL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL" index="0"]
-transform = Transform3D(0.907169, 0, -0.420767, 0, 1, 0, 0.420767, 0, 0.907169, 8.32884, -0.152671, -0.608424)
+transform = Transform3D(0.508684, 0, -0.860953, 0, 1, 0, 0.860953, 0, 0.508684, 8.32884, -0.152671, -0.608424)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_WristL" parent="locator1/Knight_Body1/Knight_ShoulderL/Knight_ArmL/Knight_ElbowL" index="0"]
@@ -52,14 +52,14 @@ material_override = ExtResource("2_kia6d")
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ShoulderR" parent="locator1/Knight_Body1" index="2"]
-transform = Transform3D(0.345242, 0.323442, 0.881019, -0.927995, -0.022506, 0.371913, 0.140121, -0.94598, 0.292383, -17.1392, 22.6547, -0.577165)
+transform = Transform3D(0.164147, -0.443692, 0.881019, 0.339326, 0.864025, 0.371913, -0.926237, 0.237904, 0.292383, -17.1392, 22.6547, -0.577165)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_ArmR" parent="locator1/Knight_Body1/Knight_ShoulderR" index="0"]
 material_override = ExtResource("2_kia6d")
 
 [node name="Knight_ElbowR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR" index="0"]
-transform = Transform3D(0.220598, 0.975365, 0, -0.975365, 0.220598, 0, 0, 0, 1, -8.32884, 0.152671, -0.608424)
+transform = Transform3D(0.951298, 0.308272, 0, -0.308272, 0.951298, 0, 0, 0, 1, -8.32884, 0.152671, -0.608424)
 material_override = ExtResource("4_8e4y3")
 
 [node name="Knight_WristR" parent="locator1/Knight_Body1/Knight_ShoulderR/Knight_ArmR/Knight_ElbowR" index="0"]
