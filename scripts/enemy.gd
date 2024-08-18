@@ -74,7 +74,7 @@ func handle_collision():
 				target.apply_knockback(-collision_normal)
 			# Apply damage if method exists in target
 			if target.has_method('take_damage'):
-				target.take_damage()
+				target.take_damage(original_scale)
 
 func apply_knockback(normal: Vector3):
 	# Apply knockback

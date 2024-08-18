@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var health: float = 100
 @export var speed = 10.0
 @export var inactivity_pickup_loss: float = 10
 @export var current_weapon_resource: WeaponResource
@@ -186,3 +187,11 @@ func attack() :
 			$CharacterCamera3D.trauma += 0.05
 			enemy.take_damage(current_weapon_resource.damage)
 			#print("Ouch")
+
+func take_damage(damage):
+	health -= damage
+	print(health)
+	if health < 0:
+		print("DEATH")
+		# TODO: Game over
+		pass

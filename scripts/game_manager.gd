@@ -154,6 +154,11 @@ func _on_gem_picked_up(gem: Gem):
 	# This is probably bad.
 	var scale_value = scale_increment * gem_scale * 10
 	current_simulated_player_scale += scale_value
+	
+	target.health += gem_scale
+	
+	if target.health > 100:
+		target.health = 100
 
 	if current_simulated_player_scale >= 12:
 		print("WIN !")
