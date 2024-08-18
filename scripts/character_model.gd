@@ -17,3 +17,9 @@ func set_hand_item_scale(scale: Vector3):
 		item.scale = scale
 	else:
 		printerr("Hand item doesn't exist")
+
+func get_hand_item_scale():
+	var item = hand.get_child(0)
+	if item:
+		return item.scale
+	else: return null

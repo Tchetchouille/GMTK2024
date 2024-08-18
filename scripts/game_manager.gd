@@ -16,6 +16,14 @@ var enemies: Array = []
 var current_scale: float = 1.0 / start_scale
 var current_simulated_player_scale : float = start_scale
 
+# Scale lerping
+var is_scaling: bool = false
+var scale_start: Vector3
+var scale_target: Vector3
+var scale_duration: float = 0.5  # Duration for the interpolation
+var scale_elapsed_time: float = 0.0
+
+
 func _ready():
 	spawn_enemies()
 	
@@ -36,12 +44,44 @@ func _on_Timer_timeout():
 	spawn_enemies()
 	
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Handles pausing the game
 	if Input.is_action_just_pressed("toggle_pause_menu") and get_tree().paused == false:
 		var instance = pause_menu.instantiate()
 		add_child(instance)
 		get_tree().paused = true
+	
+	if is_scaling:
+		scale_elapsed_time += delta
+		var t = clamp(scale_elapsed_time / scale_duration, 0.0, 1.0)
+
+		# Lerp the scale
+		var new_scale = lerp_vector(scale_start, scale_target, t)
+
+		# Apply the new scale to the terrain
+		var player_pos = target.transform.origin
+		var to_player = terrain.transform.origin - player_pos
+		var old_scale = terrain.scale
+		terrain.scale = new_scale
+		var scale_ratio = terrain.scale / old_scale
+		terrain.transform.origin = lerp_vector(terrain.transform.origin, player_pos + to_player * scale_ratio, t)
+
+		# Lerp and apply the new scale to all enemies
+		for enemy in enemies:
+			var old_enemy_scale = enemy.scale
+			enemy.scale = lerp_vector(old_enemy_scale, enemy.original_scale * new_scale, t)
+			# Threshold for removing tiny enemies
+			if enemy.scale.x <= 0.01:
+				enemies.erase(enemy)
+				enemy.queue_free()
+
+		# Lerp and apply the new scale to the weapon in hand
+		var old_hand_item_scale = target.model.get_hand_item_scale()
+		target.model.set_hand_item_scale(lerp_vector(old_hand_item_scale, new_scale, t))
+
+		# Stop scaling when done
+		if t >= 1.0:
+			is_scaling = false
 
 func spawn_enemies():
 	for i in range(number_of_enemies):
@@ -106,27 +146,17 @@ func _on_enemy_died(enemy_instance: CharacterBody3D):
 	if enemies.size() <= 1:
 		spawn_enemies()
 
+func scale_everything(target_scale_value: float, scale_increment: float):
+	# Set up the scaling operation
+	scale_start = terrain.scale
+	scale_target = target_scale_value * Vector3.ONE
+	scale_elapsed_time = 0.0
+	is_scaling = true
 
-func scale_everything(scale_value, scale_increment):
-	var scale_vector = scale_value * Vector3.ONE
-	print("Scaling terrain to: ", scale_vector)
 
-	## Scale world (terrain)
-	var player_pos = target.transform.origin
-	var to_player = terrain.transform.origin - player_pos
-	var old_scale = terrain.scale
-	terrain.scale = scale_vector
-	var scale_ratio = terrain.scale / old_scale
-	terrain.transform.origin = player_pos + to_player * scale_ratio
-
-	## Scale enemies
-	for enemy in enemies:
-		# Scale the enemy based on its original scale and the current scale vector
-		enemy.scale = enemy.original_scale * scale_vector
-		# Threshold for removing tiny enemies
-		if enemy.scale.x <= 0.01:
-			enemies.erase(enemy)
-			enemy.queue_free()
-
-	## Scale the weapon in hand
-	target.model.set_hand_item_scale(scale_vector)
+func lerp_vector(v1: Vector3, v2: Vector3, t: float) -> Vector3:
+	return Vector3(
+		lerp(v1.x, v2.x, t),
+		lerp(v1.y, v2.y, t),
+		lerp(v1.z, v2.z, t)
+	)
