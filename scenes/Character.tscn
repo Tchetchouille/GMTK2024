@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ywenk7jinwf5"]
+[gd_scene load_steps=13 format=3 uid="uid://ywenk7jinwf5"]
 
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_dgl5s"]
+[ext_resource type="Resource" uid="uid://dcgc6l10oi7wc" path="res://resources/weapons/needle.tres" id="2_fd6rj"]
 [ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ro3ve"]
 [ext_resource type="Script" path="res://scripts/ShakingCamera.gd" id="3_cwy2y"]
 [ext_resource type="AudioStream" uid="uid://bq661ax7egquv" path="res://Sounds/walking.wav" id="4_f5gh5"]
@@ -22,6 +23,7 @@ size = Vector3(2.09664, 1, 2.69949)
 
 [node name="character" type="CharacterBody3D" node_paths=PackedStringArray("model")]
 script = ExtResource("2_ro3ve")
+current_weapon_resource = ExtResource("2_fd6rj")
 model = NodePath("Player_Anim")
 
 [node name="CameraController" type="Node3D" parent="."]

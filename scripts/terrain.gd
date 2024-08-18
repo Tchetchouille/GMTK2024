@@ -16,7 +16,6 @@ var weapons: Array[WeaponResource] = [
 	#preload("res://resources/weapons/rock.tres"),
 	#preload("res://resources/weapons/chair.tres"),
 	preload("res://resources/weapons/needle.tres"),
-]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

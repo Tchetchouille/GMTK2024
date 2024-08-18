@@ -71,7 +71,7 @@ func _physics_process(delta):
 		direction.x += 1
 	if Input.is_action_pressed("move_left") :
 		direction.x -= 1
-		
+
 	if Input.is_action_just_pressed("click_action") :
 		if weapons_in_range :
 			pickup_weapon()
@@ -188,9 +188,9 @@ func attack() :
 			#print("Ouch")
 
 func take_damage(damage):
-	$CharacterCamera3D.trauma += 0.08
 	print(health)
 	health -= damage
+	camera.trauma += 0.1
 	if health < 0:
 		$"../GeneralUI/DefeatScreen".show()
 		print($"../GeneralUI/DefeatScreen".name)
